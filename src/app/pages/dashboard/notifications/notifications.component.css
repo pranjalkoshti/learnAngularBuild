@@ -1,0 +1,21 @@
+.pr-noti-header{
+	padding: 0.5em;
+	background-color: #df0808;
+	color: white;
+}
+.pr-noti-body{
+	padding:1em 0.5em;
+}
+.pr-dashboard-notifications-list{
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.pr-dashboard-notifications-list li{
+	margin-bottom: 1em;
+	color: grey;
+}
+.pr-noti-icon{
+	margin-right: 0.5em;
+}

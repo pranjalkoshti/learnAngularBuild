@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default pr-navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Pruchha</a>
+    </div>
+    <ul class="nav navbar-nav pr-navbar-list">
+      <!-- <li><a href="/">Home</a></li> -->
+      <li><a href="/list">List</a></li>
+
+  <!--<li *ngIf="!isAdmin"><a href="/signup" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Sign Up</a></li>
+      <li *ngIf="!isAdmin"><a href="/login" routerLinkActive="active">Log In</a></li>
+      <li *ngIf="isAdmin"><a href="/logout" routerLinkActive="active">Logout</a></li>
+      <li *ngIf="isAdmin"><a href="/edit-business-info" routerLinkActive="active">Edit Business Info</a></li> -->
+
+      <li ><a href="/edit-business-info" routerLink="/edit-business-info" routerLinkActive="active">Edit Info</a></li>
+      <li ><a href="/dashboard" routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li> 
+      <li ><a href="#" routerLink="/user/bob" routerLinkActive="active">How It Works</a></li> 
+      <li ><a href="/logout" routerLink="/logout" routerLinkActive="active">Logout</a></li>
+      <li ><a href="/login" routerLink="/login" routerLinkActive="active">Log In</a></li>
+      
+    </ul>
+    <ul class="nav navbar-nav navbar-right pr-navbar-right">
+        <li class="pull-right"><a href="/signup" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Sign Up</a></li>
+    </ul>
+  </div>
+</nav>

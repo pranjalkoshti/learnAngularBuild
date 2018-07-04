@@ -1,0 +1,50 @@
+.pr-t-navbar{
+	margin-bottom: 0px;
+	border-radius: 0px;
+	border:none;
+}
+.more-info{
+	padding: 8em;
+	border-radius: 0px;
+	border:0px;
+}
+.pr-t-sub-title{
+	color: #a8a6a6
+}
+.navbar-inverse .navbar-nav>li>a{
+	color: white;
+}
+
+
+
+/*red theme*/
+.red-cr-bg{
+	background-color: #e87979;
+}
+.red-cr-heading-color{
+	color: white;
+}
+
+/*green theme*/
+.green-cr-bg{
+	background-color: #52c58b;
+}
+.green-cr-heading-color{
+	color: white;
+}
+
+/*blue theme*/
+.blue-cr-bg{
+	background-color: #57bddb;
+}
+.blue-cr-heading-color{
+	color: white;
+}
+
+/*grey theme*/
+.black-cr-bg{
+	background-color: #393737;
+}
+.black-cr-heading-color{
+	color: white;
+}

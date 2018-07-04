@@ -1,0 +1,25 @@
+.wrapper{
+	position: relative;
+}
+/*.pr-ct-select-list{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}*/
+
+.pr-t-section{
+  padding:4em;
+  border-bottom: 1px solid #d2d1d14f;
+}
+
+
+.pr-ct-select {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 0.5em;
+}

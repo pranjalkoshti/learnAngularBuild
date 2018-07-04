@@ -1,0 +1,89 @@
+
+.pr-head-section{
+	/*background-color: #57d6eb ;*/
+	background-color: #406acb;
+	padding: 10em;
+}
+.pr-home-section{
+	padding: 3em;
+}
+.pr-head-section h1{
+	/*margin: 0px;*/
+	color: #ffff;
+	font-weight: 600;
+	font-size:3.2em;
+	font-family: roboto;
+}
+.pr-head-section h2{
+	margin: 0px;
+	color: #ffff;
+	font-weight: 400;
+	/*font-size:3em;*/
+	font-family: roboto;
+}
+.pr-main-header-create-btn{
+	margin-top: 3em;
+	background-color: #ffff;
+	color: #406acb;
+	font-size: 1.2em;
+}
+.pr-overlay-left-div{
+	height: 250px;
+	width: 350px;
+	background-color: #1dca80;
+	border:1px solid white;
+	position: absolute;
+	left: 10em;
+	top: 48%;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+	z-index: 1000;
+}
+.pr-overlay-div-head{
+	height: 40px;
+	width: 100%;
+	border-bottom:1px solid white;
+	background-color: #1dca80;
+}
+.pr-head-list{
+	display: inline-block;
+	height: 20px;
+	width: 50px;
+	border-radius: 20px;
+	background-color: #f0f0f0;
+	margin-right: 1em;
+	margin-top: 0.6em;
+	margin-left: 0.5em;
+}
+.pr-overlay-div-body{
+	height: 100px;
+	width: 100%;
+	border-bottom:1px solid white;
+	/*background-color: #1dca80;*/
+	background-color: white;
+}
+.pr-body-button{
+	margin: auto;
+	margin-top: 70px;
+	background-color: #ffba48;
+}
+
+
+.pr-overlay-left-div-two{
+	height: 250px;
+	width: 350px;
+	background-color: #f7502c;
+	border:1px solid white;
+	position: absolute;
+	left: 20em;
+	top: 57%;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+}
+.pr-overlay-div-footer{
+	height: 20px;
+	width: 100%;
+	bottom: 0;
+	background-color: white;
+}
+.pr-overlay-left-div-two .pr-overlay-div-head{
+	background-color: #f7502c;
+}

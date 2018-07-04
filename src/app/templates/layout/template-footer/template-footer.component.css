@@ -1,0 +1,29 @@
+footer{
+  background-color: #2e2d2d;
+  padding-top: 20px;
+  margin-top: 50px;
+}
+.footer ul{
+  list-style: none;
+}
+.footer li{
+  padding: 5px;
+
+}
+.footer,.footer a{
+  color: #888989;
+}
+
+.pr-t3-btn{
+  border-radius: 0;
+}
+.pr-t3-btn:hover{
+   box-shadow: 2px 1px 5px 2px rgba(0, 0, 0, 0.50);
+  color: white;
+}
+
+.footer-bottom a{
+  color: #888989;
+  padding: 5px;
+  padding-right: 50px;
+}

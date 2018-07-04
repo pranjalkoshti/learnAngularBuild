@@ -1,0 +1,34 @@
+.pr-stats-card-left,.pr-stats-card-right{
+	/*display: table-cell;*/
+	/*width: 120px;*/
+	display: inline-block;
+}
+.pr-stats-card-right{
+	padding-left: 1em;
+	text-align: center;
+}
+.pr-stats-card-right h5{
+	font-weight: 600;
+	margin: 0;
+}	
+.pr-stats-card-right p{
+	color: #c01794;
+	/*font-size: 1.5em;*/
+}
+.panel{
+	box-shadow: none;
+}
+.pr-stat-icon{
+	height: 60px;
+	width: 60px;
+	background-color: #c01794;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 70px;
+	vertical-align: middle
+}
+
+.pr-stat-icon i{
+	font-size: 2em;
+	color: white;
+}

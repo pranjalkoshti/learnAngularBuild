@@ -1,0 +1,33 @@
+<div class="text-center" style="padding:0.5em;"><p style="font-style: italic;margin:0px;color:grey;">This page is preview of final web page. You can edit information provided on web page which will appear on final page.Once you are done with editing, just click on submit.</p>
+  <div class="text-center"><button class="btn btn-sm btn-primary pr-t-submit-final">Submit</button></div></div>
+
+   <nav class="navbar navbar-inverse pr-t-navbar" [ngClass]="setBgColor()">
+	<div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#pr-t-navbar">
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand pr-t-logo" href="#"><img [src]="logoPath" height="40px" alt=""></a>
+		</div>
+		<div class="collapse navbar-collapse" id="pr-t-navbar">
+		  <ul class="nav navbar-nav navbar-right">
+		    <li class="active"><a href="#">Home</a></li>
+		    <li><a href="#about">About</a></li>
+		    <li><a href="#demo">Features</a></li>
+		    <li><a href="#contact">Gallery</a></li>
+		    <li><a href="#contact">Contact</a></li>
+		  </ul>
+		</div>
+	</div>
+</nav>
+<div class="more-info text-center" [ngClass]="setBgColor()">
+  <h1 class="pr-t-title pr-t-edit-input" [ngClass]="setHeaderColor()" data-editable>{{title}}</h1>
+  <h2 class="pr-t-sub-title pr-t-edit-input" data-editable>ADD SUB-TITLE</h2>
+    <br>
+  <button type="button" class="btn pr-t-btn -pr-t-find-more-btn " id="transform" name="button">Find more</button>
+</div>
+
+
+

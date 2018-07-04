@@ -1,0 +1,18 @@
+.pr-how-it-works-section{
+	padding: 5em;
+}
+.pr-how-it-works-section h2{
+	margin: 0px;
+	margin-bottom: 1em;
+	font-weight: 600;
+	font-size:3.2em;
+	font-family: roboto;
+}
+.pr-how-it-works-section h4{
+	font-weight: 200;
+}
+.pr-how-it-works-panel{
+	padding: 2em;
+	box-shadow: none;
+	border:1px solid #d3d3d35e;
+}

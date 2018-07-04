@@ -1,0 +1,36 @@
+nav{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+.pr-navbar{
+	margin-bottom: 0px;
+	background-color: transparent;
+	border:0px;
+	/*box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);*/
+	border-bottom: 1px solid #e7e7e7;
+}
+.pr-navbar-list li a{
+	border-top: 3px solid transparent;
+}
+.pr-navbar-list li a:hover{
+	border-top: 3px solid #406acb;
+}
+.pr-navbar-list li:hover > a{
+	color: #406acb;
+	/*font-weight: 400;*/
+}
+.pr-navbar-right li a{
+	padding: 0px;
+	padding:0.5em 1em;
+	border-radius: 20px;
+	background-color: #406acb;
+	color: white;
+	margin-top:0.7em;
+	font-weight: 400;
+}
+
+.pr-navbar-list li a.active{
+	border-top: 3px solid #406acb;
+	color: #406acb;
+	font-weight: 400;
+}

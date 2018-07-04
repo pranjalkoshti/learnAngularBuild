@@ -1,0 +1,25 @@
+
+.pr-main-row{
+	padding-top: 10%;
+}
+
+.pr-login-btn{
+	background-color: #406acb;
+	border-color: transparent;
+	color: white;
+}
+
+.pr-signup-btn{
+	background-color: transparent;
+	border:1px solid #406acb ;
+	/*border-color: #57d6eb;*/
+	color: #406acb;
+}
+.pr-main-login-form{
+	padding-top: 2em;
+}
+
+.pr-main-error{
+	/*color:#e60202;*/
+	margin:0px;
+}

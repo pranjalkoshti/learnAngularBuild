@@ -1,0 +1,23 @@
+<body>
+	<div class="wrapper">
+	<app-template-header [theme]="colorTheme" [title]="pr_business_title" [logoPath]="pr_business_logo_path"></app-template-header>
+	<div class="pr-ct-select-list">
+		<span class="pr-ct-select" id="red" style="background-color: #e87979"></span>
+		<span class="pr-ct-select" id="green" style="background-color: #52c58b"></span>
+		<span class="pr-ct-select" id="blue" style="background-color: #57bddb"></span>
+		<span class="pr-ct-select" id="black" style="background-color: #393737"></span>
+	</div>
+	</div>
+<div class="container">
+	<section class="pr-t-section">
+		<app-template-about [about]="pr_business_description"></app-template-about>
+	</section>
+	<section class="pr-t-section">
+		<app-template-features></app-template-features>
+	</section>
+	<section class="pr-t-section">
+		<app-template-gallery></app-template-gallery>
+	</section>
+</div>
+<app-template-footer></app-template-footer>
+</body>

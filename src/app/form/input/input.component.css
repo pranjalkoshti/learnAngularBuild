@@ -1,0 +1,16 @@
+
+:host{
+	
+}
+
+.form-group .pr-input{
+	border:none;
+	box-shadow: none;
+	outline: none;
+	border-bottom: 1px solid #e7e7e7;
+	border-radius: 0px;
+}
+
+/*.form-group  .pr-input  .ng-valid{
+	border-bottom: 1px solid green;
+}*/

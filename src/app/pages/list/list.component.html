@@ -1,0 +1,12 @@
+
+<div class="container">
+	<h1>lists</h1>
+	<div class="row">
+		<div class="col-md-4" *ngFor = "let user of users; let ind = index">
+			<div class="panel panel-default" >
+			  <div class="panel-heading">{{user.fname}} {{user.lname}}</div>
+			  <div class="panel-body">Date: {{user.date_created | date}}</div>
+			</div>
+		</div>
+	</div>
+</div>

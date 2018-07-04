@@ -1,0 +1,61 @@
+<div class="container">
+		<div class="row pr-main-row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<div class="text-center">
+					<h3>Edit Business Information</h3>
+					<!-- <p>New to Pruchha? <a href="/signup" class="btn btn-sm pr-signup-btn">Sign Up</a></p> -->
+				</div>
+				<form class="form-horizontal pr-info-form " [formGroup]="form">
+			            <!-- Name input-->
+			         <!--    <div class="form-group">
+			              <label class="col-md-3 control-label" for="businessTitle">Business Title</label>
+			              <div class="col-md-9">
+			                <input id="businessTitle" name="businessTitle" type="text" placeholder="Business Title" class="form-control pr-info-input">
+			              </div>
+			            </div> -->
+			            <app-input [name]="'businessTitle'" [type]="'text'" [control]="form.controls.control" ngDefaultControl></app-input>
+
+
+			             <!-- Name input-->
+			      <!--       <div class="form-group">
+			              <label class="col-md-3 control-label" for="lname">Business Type</label>
+			              <div class="col-md-9">
+			                <input id="businessType" name="businessType" type="text" placeholder="Business Type" class="form-control pr-info-input">
+			              </div>
+			            </div> -->
+			            <app-input [name]="'businessType'" [type]="'text'" [control]="form.controls.control" ngDefaultControl></app-input>
+			    
+			            
+			            <!-- Message body -->
+			         <!--    <div class="form-group">
+			              <label class="col-md-3 control-label" for="businessDescription">Business Description</label>
+			              <div class="col-md-9">
+			                <textarea class="form-control pr-info-input" id="businessDescription" name="businessDescription" placeholder="Please describe your business here" rows="3"></textarea>
+			              </div>
+			            </div>
+			     -->
+			            <app-input [name]="'businessDescription'" [type]="'text'" [control]="form.controls.control" ngDefaultControl></app-input>
+
+
+			           <!-- password input-->
+			     <!--        <div class="form-group">
+			              <label class="col-md-3 control-label" for="Url">Business Url</label>
+			              <div class="col-md-9">
+			                <input id="Url" name="Url" type="text" placeholder="Business url" class="form-control pr-info-input">
+			              </div>
+			            </div> -->
+			            <app-input [name]="'url'" [type]="'text'" [control]="form.controls.control" ngDefaultControl></app-input>
+
+			    
+			            <!-- Form actions -->
+			            <div class="form-group">
+			              <div class="col-md-12 text-center">
+			                <button type="button" class="btn btn-sm pr-submit-btn" (click)="updateBusinessInfo()" [disabled]="!form.valid">Submit</button>
+			              </div>
+			            </div>
+			          </form>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+	</div>
