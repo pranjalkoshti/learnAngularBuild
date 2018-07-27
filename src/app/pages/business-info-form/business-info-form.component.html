@@ -1,61 +1,168 @@
-<div class="container">
+<div class="container-fluid">
+
+		<!-- sidebar -->
+	<div class="col-md-3 pr-sidebar-column">
+		<app-sidebar [id]='userId' [title]='business_title'></app-sidebar>
+	</div>
+	<!-- sidebar ends -->
+<div class="col-md-9">
 		<div class="row pr-main-row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
 				<div class="text-center">
 					<h3>Edit Business Information</h3>
 					<!-- <p>New to Pruchha? <a href="/signup" class="btn btn-sm pr-signup-btn">Sign Up</a></p> -->
 				</div>
 				<form class="form-horizontal pr-info-form " [formGroup]="form">
-			            <!-- Name input-->
-			         <!--    <div class="form-group">
-			              <label class="col-md-3 control-label" for="businessTitle">Business Title</label>
-			              <div class="col-md-9">
-			                <input id="businessTitle" name="businessTitle" type="text" placeholder="Business Title" class="form-control pr-info-input">
-			              </div>
-			            </div> -->
-			            <app-input [name]="'businessTitle'" [type]="'text'" [control]="form.controls.control" ngDefaultControl></app-input>
+		            <!-- <app-input [name]="'businessTitle'" [type]="'text'" [control]="form.controls.control" [value]="pr_business_title"></app-input>
+
+		            <app-input [name]="'businessSubtitle'" [type]="'text'" [control]="form.controls.control" [value]="pr_business_subtitle"></app-input>
+		    
+		            <app-textarea [name]="'businessAbout'" [type]="'text'" [control]="form.controls.control" [value]="pr_business_about"></app-textarea>
+
+		            <app-input [name]="'city'" [type]="'text'" [control]="form.controls.control" [value]="pr_business_city"></app-input>
+
+		            <app-textarea [name]="'address'" [type]="'text'" [control]="form.controls.control" [value]="pr_business_address"></app-textarea>
 
 
-			             <!-- Name input-->
-			      <!--       <div class="form-group">
-			              <label class="col-md-3 control-label" for="lname">Business Type</label>
-			              <div class="col-md-9">
-			                <input id="businessType" name="businessType" type="text" placeholder="Business Type" class="form-control pr-info-input">
-			              </div>
-			            </div> -->
-			            <app-input [name]="'businessType'" [type]="'text'" [control]="form.controls.control" ngDefaultControl></app-input>
-			    
-			            
-			            <!-- Message body -->
-			         <!--    <div class="form-group">
-			              <label class="col-md-3 control-label" for="businessDescription">Business Description</label>
-			              <div class="col-md-9">
-			                <textarea class="form-control pr-info-input" id="businessDescription" name="businessDescription" placeholder="Please describe your business here" rows="3"></textarea>
-			              </div>
-			            </div>
-			     -->
-			            <app-input [name]="'businessDescription'" [type]="'text'" [control]="form.controls.control" ngDefaultControl></app-input>
+		            <app-input [name]="'external_url'" [type]="'text'" [control]="form.controls.control" [value]="pr_business_external_url"></app-input> -->
+
+			  		<div class="form-group">
+			          <label class="col-md-3 control-label">Business Title</label>
+			          <div class="col-md-9">
+			             <input [ngModel]="pr_business_title" class="form-control pr-info-input" formControlName="businessTitle" placeholder="Business Title">
+			          </div>
+			        </div>
+			        <div class="alert alert-danger col-md-9 col-md-offset-3" *ngIf="form.get('businessTitle').invalid && form.get('businessTitle').touched">
+			        	<div *ngIf="form.get('businessTitle').hasError('required')">
+			        		<p>Title is required</p>
+			        	</div>
+			        	<div *ngIf="form.get('businessTitle').hasError('minlength')">
+			        		<p>Title must be atleast 5 characters</p>
+			        	</div>
+			        	<div *ngIf="form.get('businessTitle').hasError('maxlength')">
+			        		<p>Title must be max 45 characters</p>
+			        	</div>
+			        </div>
+
+			        <div class="form-group">
+			          <label class="col-md-3 control-label">Business Subtitle</label>
+			          <div class="col-md-9">
+			             <input [ngModel]="pr_business_subtitle" class="form-control pr-info-input" formControlName="businessSubtitle" placeholder="Business Subtitle">
+			          </div>
+			        </div>
+			        <div class="alert alert-danger col-md-9 col-md-offset-3" *ngIf="form.get('businessSubtitle').invalid && form.get('businessSubtitle').touched">
+			        	<div *ngIf="form.get('businessSubtitle').hasError('required')">
+			        		<p>Subtitle is required</p>
+			        	</div>
+			        	<div *ngIf="form.get('businessSubtitle').hasError('minlength')">
+			        		<p>Subtitle must be atleast 30 characters</p>
+			        	</div>
+			        	<div *ngIf="form.get('businessSubtitle').hasError('maxlength')">
+			        		<p>Subtitle must be max 80 characters</p>
+			        	</div>
+			        </div>
+
+			        <div class="form-group">
+			          <label class="col-md-3 control-label">Business About</label>
+			          <div class="col-md-9">
+			            <textarea class="form-control pr-info-input" [ngModel]="pr_business_about" formControlName="businessAbout" placeholder="Business About" rows="3"></textarea>
+			          </div>
+			        </div>
+			        <div class="alert alert-danger col-md-9 col-md-offset-3" *ngIf="form.get('businessAbout').invalid && form.get('businessAbout').touched">
+			        	<div *ngIf="form.get('businessAbout').hasError('required')">
+			        		<p>About information is required</p>
+			        	</div>
+			        	<div *ngIf="form.get('businessAbout').hasError('minlength')">
+			        		<p>About must be atleast 100 characters</p>
+			        	</div>
+			        	<div *ngIf="form.get('businessAbout').hasError('maxlength')">
+			        		<p>About must be max 445 characters</p>
+			        	</div>
+			        </div>
 
 
-			           <!-- password input-->
-			     <!--        <div class="form-group">
-			              <label class="col-md-3 control-label" for="Url">Business Url</label>
-			              <div class="col-md-9">
-			                <input id="Url" name="Url" type="text" placeholder="Business url" class="form-control pr-info-input">
-			              </div>
-			            </div> -->
-			            <app-input [name]="'url'" [type]="'text'" [control]="form.controls.control" ngDefaultControl></app-input>
+			        <div class="form-group">
+			          <label class="col-md-3 control-label">Business Logo</label>
+			          <div class="col-md-9">
+			            <input type="file" name="business_gallery_images" class="form-control" formControlName="businessGalleryImages" (change)="onLogoSelect($event)" style="display:none" #fileInput>
+			            <button type="button" class="btn" (click)="fileInput.click()">Upload Logo</button>
+			          </div>
+			        </div>
 
-			    
-			            <!-- Form actions -->
-			            <div class="form-group">
-			              <div class="col-md-12 text-center">
-			                <button type="button" class="btn btn-sm pr-submit-btn" (click)="updateBusinessInfo()" [disabled]="!form.valid">Submit</button>
-			              </div>
-			            </div>
-			          </form>
+			        <div class="form-group">
+			          <label class="col-md-3 control-label">Business City</label>
+			          <div class="col-md-9">
+			               <input [ngModel]="pr_business_city" class="form-control pr-info-input" formControlName="city" placeholder="Business City">
+			          </div>
+			        </div>
+			        <div class="alert alert-danger col-md-9 col-md-offset-3" *ngIf="form.get('city').invalid && form.get('city').touched">
+			        	<div *ngIf="form.get('city').hasError('required')">
+			        		<p>City information is required</p>
+			        	</div>
+			        	<div *ngIf="form.get('city').hasError('minlength')">
+			        		<p>City must be atleast 4 characters</p>
+			        	</div>
+			        	<div *ngIf="form.get('city').hasError('maxlength')">
+			        		<p>City must be max 45 characters</p>
+			        	</div>
+			        </div>
+
+			        <div class="form-group">
+			          <label class="col-md-3 control-label">Business Address</label>
+			          <div class="col-md-9">
+			             <textarea class="form-control pr-info-input" [ngModel]="pr_business_address" formControlName="address" placeholder="Business Address"></textarea>
+			          </div>
+			        </div>
+			        <div class="alert alert-danger col-md-9 col-md-offset-3" *ngIf="form.get('address').invalid && form.get('address').touched">
+			        	<div *ngIf="form.get('address').hasError('required')">
+			        		<p>Address information is required</p>
+			        	</div>
+			        	<div *ngIf="form.get('address').hasError('minlength')">
+			        		<p>Address must be atleast 4 characters</p>
+			        	</div>
+			        	<div *ngIf="form.get('address').hasError('maxlength')">
+			        		<p>Address must be max 445 characters</p>
+			        	</div>
+			        </div>
+
+			         <!--  <div class="form-group">
+			          <label class="col-md-3 control-label">External url</label>
+			          <div class="col-md-9">
+			               <input [ngModel]="pr_business_external_url" class="form-control pr-info-input" formControlName="external_url" placeholder="External url">
+			          </div>
+			        </div> -->
+			  		  
+					<div class="form-group has-feedback">
+						<label class="col-md-3 control-label">Facebook Link</label>
+			          <div class="col-md-9">
+					    <input type="text" class="form-control pr-info-input" placeholder="Facebook Link" formControlName="facebook_link" [value]="pr_business_facebook_link" />
+					    <i class="fa fa-facebook-square fa-lg form-control-feedback"></i>
+					</div>
+					</div>
+					 <div class="alert alert-danger" *ngIf="form.get('facebook_link').invalid && form.get('facebook_link').touched">
+			        	<div *ngIf="form.get('facebook_link').hasError('pattern')">
+			        		<p>Provided link is not valid.</p>
+			        	</div>
+			        </div>
+
+					<div class="form-group has-feedback">
+						<label class="col-md-3 control-label">Google Link</label>
+			          <div class="col-md-9">
+					    <input type="text" class="form-control pr-info-input" placeholder="Google Link" formControlName="google_link" [value]="pr_business_google_link"/>
+					    <i class="fa fa-google-plus-square fa-lg form-control-feedback"></i>
+					</div>
+					</div>
+		    
+		            <!-- Form actions -->
+		            <div class="form-group">
+		              <div class="col-md-9 col-md-offset-3 text-center">
+		                <button type="button" class="btn btn-sm pr-submit-btn" (click)="updateBusinessInfo()" [disabled]="!form.valid">Submit</button>
+		              </div>
+		            </div>
+			    </form>
 			</div>
-			<div class="col-md-4"></div>
+			<div class="col-md-3"></div>
 		</div>
 	</div>
+</div>

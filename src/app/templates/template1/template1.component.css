@@ -1,3 +1,4 @@
+
 .wrapper{
 	position: relative;
 }
@@ -13,7 +14,6 @@
   border-bottom: 1px solid #d2d1d14f;
 }
 
-
 .pr-ct-select {
   height: 25px;
   width: 25px;
@@ -22,4 +22,14 @@
   display: inline-block;
   cursor: pointer;
   margin-right: 0.5em;
+  float: right;
+}
+.pr-t-save-final{
+  margin-right: 1em;
+}
+input.ng-invalid{
+  border:1px solid red;
+}
+textarea.ng-invalid{
+  border:1px solid red;
 }

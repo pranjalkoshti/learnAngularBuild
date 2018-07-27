@@ -1,0 +1,150 @@
+.pr-stats-card-left,.pr-stats-card-right{
+	/*display: table-cell;*/
+	/*width: 120px;*/
+	display: inline-block;
+}
+.pr-stats-card-right{
+	padding-left: 1em;
+	text-align: center;
+}
+.pr-stats-card-right h5{
+	font-weight: 600;
+	margin: 0;
+}	
+.pr-stats-card-right p{
+	color: #c01794;
+	/*font-size: 1.5em;*/
+}
+.panel{
+	box-shadow: none;
+	border-radius: 0;
+}
+.pr-stat-icon{
+	height: 60px;
+	width: 60px;
+	background-color: #c01794;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 70px;
+	vertical-align: middle
+}
+.pr-stat-icon i{
+	font-size: 2em;
+	color: white;
+}
+.pr-business-cover{
+	/*background: url('../../../../assets/general-images/background.jpg') center center ;*/
+	/*background-color: #08225e;
+	background-size: cover;*/
+	/*height: 100%;*/
+	/*padding: 2em;*/
+	position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    height: 150px;
+    padding: 2em;
+
+}
+.pr-business-cover img{
+	position: absolute;
+    max-height: 70%;
+    max-width: 70%;
+    height: auto;
+    width: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+.pr-business-cover h2 a, .pr-business-cover h3{
+	color: #e6e6e6;
+}
+.pr-sub-panel{
+	padding: 1em;
+}
+.pr-panel-border{
+	border: 1px solid #d5d4d4;
+}
+.pr-stats-bar{
+	padding: 1em;
+	/*border-top: 1px solid #d3d3d35e;*/
+}
+.pr-stats-bar div{
+	padding: 1em;
+	/*float: left;*/
+	display: inline-block;
+	width: 33.33%;
+	border-right: 1px solid #d3d3d35e;
+	text-align: center;
+}
+.pr-stats-bar div:nth-of-type(1){
+	border-left: none;
+}
+.pr-stats-bar div:nth-of-type(3){
+	border-right: none;
+}
+.pr-stats-bar div h5{
+	color: #7e7e7e; 
+}
+.pr-published-date{
+	float: right;
+}
+.pr-published-date .title{
+	color: grey;
+	padding-right: 0.5em;
+}
+.pr-published-date .date{
+	color: grey;
+}
+.pr-info-bar{
+	padding: 1em;
+	/*border-top: 1px solid #d3d3d35e;*/
+	/*margin:0;*/
+}
+.pr-page-url .title{
+	color: grey;
+	padding-right: 0.5em;
+}
+.pr-page-url .url{
+	color: grey;
+}
+.pr-details-bar{
+	background-color: white;
+	margin-bottom: 1em;
+	word-wrap: break-word;
+}
+.pr-details-bar .col-md-6{
+	margin:0px;
+	padding:0px;
+}
+
+/*.pr-details-bar {
+	display: table;
+}
+.pr-details-bar .col-md-4{
+	display: table-cell;
+}
+.pr-details-bar .col-md-8{
+	display: table-cell;
+}*/
+
+.pr-details-left-side{
+	/*display: table-cell;*/
+	display: inline-block;
+	width: 30%;	
+}
+.pr-details-right-side{
+	/*display: table-cell;*/
+	display: inline-block;
+	width: 70%;
+}
+
+@media only screen and (max-width: 600px) {
+    .pr-details-left-side,.pr-details-right-side{
+		display: block;
+		width: 100%;
+	}
+}

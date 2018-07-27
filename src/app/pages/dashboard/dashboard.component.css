@@ -1,7 +1,13 @@
+.container-fluid{
+	background-color: #eeeeee;
+	padding: 0;
+}
+.pr-sidebar-column{
+	padding: 0;
+}
 .pr-dashboard-row{
 	padding-top: 2em;
 }
-
 .pr-dashboard-panel{
 	box-shadow: none;
 	border-radius: 0px;
@@ -12,3 +18,19 @@
 .pr-panel-border{
 	border:1px solid #d3d3d35e;
 }
+.pr-panel-published-status{
+	background-color: #e34a4a;
+}
+.pr-not-published{
+	color: white;
+	margin:0px;
+}
+.col-md-10{
+	padding:0px;
+}
+
+/*@media only screen and (min-width: 600px) {
+    .container-fluid{
+        padding: 0;
+    }
+}*/

@@ -3,6 +3,6 @@
  <div class="form-group" [formGroup]="control">
 	<!-- <label class="col-md-3 control-label" for="{{name}}">{{name}}</label> -->
 	<!-- <div class="col-md-9"> -->
-	<input id="{{name}}" name="{{name}}" type="{{type}}" placeholder="{{name}}" class="form-control pr-input" formControlName="{{name}}">
+	<input id="{{name}}" name="{{name}}" type="{{type}}" placeholder="{{name}}" class="form-control pr-input" formControlName="{{name}}" [ngModel]="value">
 	<!-- </div> -->
 </div>

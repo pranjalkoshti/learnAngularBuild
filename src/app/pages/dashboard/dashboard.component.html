@@ -1,36 +1,121 @@
-<div class="container">
+
+<div class="container-fluid">
+	<!-- sidebar -->
+	<div class="col-md-3 pr-sidebar-column">
+		<app-sidebar></app-sidebar>
+	</div>
+	<!-- sidebar ends -->
+
+
+	<div class="col-md-9">
+<!-- <div class="container"> -->
+		<!-- notification area -->
+		<div class="row pr-dashboard-row" *ngIf = "published">
+			<div class="col-md-12">
+				<div>
+					<div class="panel pr-dashboard-panel pr-panel-border pr-panel-padding pr-panel-published-status">
+						<p class="pr-not-published">Your business is not published yet, public url will be available when you will publish your business. Click on change template url to update template </p>
+					</div>
+				</div>
+				<!-- <div class="panel pr-dashboard-panel"> -->
+					<!-- <app-recent-notifications></app-recent-notifications> -->
+				<!-- </div> -->
+			</div>
+		</div>
+		<!-- notification area ends -->
 
 	<div class="row pr-dashboard-row">
-		<div class="col-md-12">
-			<!-- <div class="panel pr-dashboard-panel"> -->
-				<app-recent-notifications></app-recent-notifications>
-			<!-- </div> -->
-		</div>
-	</div>
-	<div class="row pr-dashboard-row">
+		<section>
 <!-- 		<div class="col-md-4">
 			<div class="panel pr-dashboard-panel">
 				<app-notifications></app-notifications>
 			</div>
 			
 		</div> -->
-		<div class="col-md-8">
-			<div class="panel pr-dashboard-panel pr-panel-border pr-panel-padding">
-				<app-stats></app-stats>
-			</div>
-			
-		</div>
-		<div class="col-md-4">
+<!-- 		<div class="col-md-3">
 			<div class="panel pr-dashboard-panel pr-panel-border">
-				<app-notifications></app-notifications>
+				<app-sidebar [id]='userId' [title]='business_title'></app-sidebar>
 			</div>
+			<div class="panel pr-dashboard-panel pr-panel-border">
+				<div *ngIf = 'stat; else noNotifications'>
+					<app-notifications></app-notifications>
+				</div>
+				<ng-template #noNotifications>
+
+				    <h5>There are no recent notifications. </h5><a routerLink = "/{{userId}}/edit-business-info"></a>
+				</ng-template>
+			</div>
+		
+		</div> -->
+		<div class="col-md-10 col-md-offset-1">
+			<!-- <div class="panel pr-dashboard-panel "> -->
+				<!-- <div *ngIf = 'stat; else notRegistered'> -->
+					<app-details [data]="[stat, business_title, business_subtitle, business_about, page_views, publicUrl]"></app-details>
+				<!-- </div> -->
+			<!--<ng-template #notRegistered>
+				    <h5>You business is not yet registered with pruchha. Please follow link provided to register your business.</h5><a routerLink = "/{{userId}}/edit-business-info">Register business</a>
+				</ng-template> -->
+				
+			<!-- </div> -->
 		</div>
+		<!-- <div class="col-md-2"></div> -->
+	</section>
+	<section>
+		<div class="col-md-10 col-md-offset-1">
+			<!-- <div class="panel pr-dashboard-panel "> -->
+				<!-- <div *ngIf = 'stat; else notRegistered'> -->
+					<app-stats></app-stats>
+				<!-- </div> -->
+			<!--<ng-template #notRegistered>
+				    <h5>You business is not yet registered with pruchha. Please follow link provided to register your business.</h5><a routerLink = "/{{userId}}/edit-business-info">Register business</a>
+				</ng-template> -->
+				
+			<!-- </div> -->
+		</div>
+		
+	</section>
+	
+	<!-- <section id="notifications">
+		<div class="col-md-10 col-md-offset-1"> -->
+			<!-- <div class="panel pr-dashboard-panel "> -->
+				<!-- <div *ngIf = 'stat; else notRegistered'> -->
+					<!-- <app-notifications></app-notifications> -->
+				<!-- </div> -->
+			<!--<ng-template #notRegistered>
+				    <h5>You business is not yet registered with pruchha. Please follow link provided to register your business.</h5><a routerLink = "/{{userId}}/edit-business-info">Register business</a>
+				</ng-template> -->
+				
+			<!-- </div> -->
+<!-- 		</div>
+	</section> -->
+
+		<section>
+		<div class="col-md-10 col-md-offset-1">
+			<!-- <div class="panel pr-dashboard-panel "> -->
+				<!-- <div *ngIf = 'stat; else notRegistered'> -->
+					<app-contacts></app-contacts>
+				<!-- </div> -->
+			<!--<ng-template #notRegistered>
+				    <h5>You business is not yet registered with pruchha. Please follow link provided to register your business.</h5><a routerLink = "/{{userId}}/edit-business-info">Register business</a>
+				</ng-template> -->
+				
+			<!-- </div> -->
+		</div>
+		
+	</section>
 	</div>
-	<div class="row pr-dashboard-row">
+
+
+	<!-- <div class="row pr-dashboard-row">
 		<div class="col-md-12">
 			<div class="panel pr-dashboard-panel pr-panel-border pr-panel-padding">
 				<app-current-selections></app-current-selections>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
+</div>
+<!-- </div> -->
+
+
+

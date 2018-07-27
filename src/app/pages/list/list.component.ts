@@ -13,10 +13,8 @@ export class ListComponent implements OnInit {
 
   constructor(private getDataService:GetDataService) { 
 
-  	this.getDataService.getUsers().subscribe((res:any[])=>{
-  		this.users =  res;console.log(res)
-  	});
-  	
+  		this.users =  this.getDataService.getUsers();  	
+      console.log(this.users)
 
   }
 
@@ -24,7 +22,5 @@ export class ListComponent implements OnInit {
   	
   }
 
-  getUsers() {
-  	
-  }
+
 }

@@ -1,40 +1,19 @@
-<div class="row">
-	<div class="col-md-4">
-	<div class="panel">
-		<div class="pr-stats-card-left">
-			<p class="pr-stat-icon"><i class="fa fa-line-chart"></i></p>
+<!-- <div class="container">
+<div class="row pr-stats-row"> -->
+	<div class="col-md-12 ">
+	<div class="panel pr-stats-panel pr-panel-border">
+		<div class="pr-stats-header">
+			<h4>Stats <span class="pr-noti-icon pull-right"></span></h4>
 		</div>
-		<div class="pr-stats-card-right">
-			<h5>Recent Views</h5>
-			<p>ff</p>
+		<div class="panel pr-stats-body" *ngIf="statPresent; else statTemplate">
+			<canvas id="chart">{{chart}}</canvas>
 		</div>
+		<ng-template #statTemplate>
+		<div class="panel pr-stats-body" style="padding: 1em;color: grey;">
+			<p>Stat not present</p>
+		</div>
+	</ng-template>
 	</div>
 </div>
-<div class="col-md-4">
-	<div class="panel">
-		<div class="pr-stats-card-left">
-			<p class="pr-stat-icon"><i class="fa fa-line-chart"></i></p>
-		</div>
-		<div class="pr-stats-card-right">
-			<h5>Recent Views</h5>
-			<p>ff</p>
-		</div>
-	</div>
-</div>
-<div class="col-md-4">
-	<div class="panel">
-		<div class="pr-stats-card-left">
-			<p class="pr-stat-icon"><i class="fa fa-line-chart"></i></p>
-		</div>
-		<div class="pr-stats-card-right">
-			<h5>Recent Views</h5>
-			<p>ff</p>
-		</div>
-	</div>
-</div>
-</div>
-<div class="row">
-	<div>
-		
-	</div>
-</div>
+<!-- </div>
+ </div>  -->

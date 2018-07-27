@@ -1,34 +1,15 @@
-.pr-stats-card-left,.pr-stats-card-right{
-	/*display: table-cell;*/
-	/*width: 120px;*/
-	display: inline-block;
-}
-.pr-stats-card-right{
-	padding-left: 1em;
-	text-align: center;
-}
-.pr-stats-card-right h5{
-	font-weight: 600;
-	margin: 0;
-}	
-.pr-stats-card-right p{
-	color: #c01794;
-	/*font-size: 1.5em;*/
+.pr-stats-row{
+	margin-top: 1em;
 }
 .panel{
 	box-shadow: none;
+	border-radius: 0;
 }
-.pr-stat-icon{
-	height: 60px;
-	width: 60px;
-	background-color: #c01794;
-	border-radius: 50%;
-	text-align: center;
-	line-height: 70px;
-	vertical-align: middle
+.pr-panel-border{
+	border: 1px solid #d5d4d4;
 }
-
-.pr-stat-icon i{
-	font-size: 2em;
-	color: white;
+.pr-stats-header{
+	padding: 1em;
+	border-bottom: 1px solid #eeeeee;
+	color: #08225e;
 }

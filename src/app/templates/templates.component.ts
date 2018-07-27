@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-templates',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplatesComponent implements OnInit {
 
-  constructor() { }
+  idParam;
+
+  constructor( private router: Router,  private route: ActivatedRoute ) {
+  this.route.params.subscribe( params => this.idParam = params['id']); }
 
   ngOnInit() {
+  }
+
+
+  onClickSelectTemplate(e) {
+      var route = this.idParam +'/templates/'+ e.target.getAttribute('id');
+      var id = e.target.getAttribute('id');
+      //console.log(route)
+  		this.router.navigate([route]);
   }
 
 }

@@ -1,86 +1,99 @@
 var express = require('express');
 var router = express.Router();
 var session = require('express-session');
+var config = require('../../config/config');
+var user = require('../../config/db-config');
+var jwt = require('jsonwebtoken');
+var user = require('../../config/db-config');
+var get_data = require('../../config/get-data');
+var send_data = require('../../config/send-data');
+
+
+var multer = require('multer');
+var upload = multer();
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './src/assets/uploads/logos/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+
+var upload = multer({ storage: storage }).single('logo');
+
+
+var gallaryImgStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './src/assets/uploads/galleryImages/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+
+var uploadGalleryImages = multer({ storage: gallaryImgStorage }).array('gallery_images');
+
 
 var bcrypt = require('bcrypt');
-const saltRounds = 10;
+var saltRounds = 10;
+
+
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
 
 var mysql = require('mysql'); //MYSQL DATABASE CONNECTIVITY
 
-var connection = mysql.createConnection({   // DATABASE CONNECTIVITY CREDENTIALS
-  host     : 'localhost',
-  user     : 'root',
-  password : 'password'
-});
+// console.log(config)
 
-connection.connect(function(error){
-	if(error){
-		console.log('Error in creating database connection');
-	}else{
-		console.log('Connected');
-	}
-});
-
-connection.query('USE pruchha',function(error){
-	if(error){
-		console.log('database not found');
-	}else{
-		console.log('database found');
-	}
-});
-
-
-// // Add headers
-// router.use(function (req, res, next) {
-
-//     // Website you wish to allow to connect
-//     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-
-//     // Request methods you wish to allow
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-//     // Request headers you wish to allow
-//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-//     // Set to true if you need the website to include cookies in the requests sent
-//     // to the API (e.g. in case you use sessions)
-//     res.setHeader('Access-Control-Allow-Credentials', true);
-
-//     // Pass to next layer of middleware
-//     next();
+// var connection = mysql.createConnection({   // DATABASE CONNECTIVITY CREDENTIALS
+//   host     : config.mysqlHost,
+//   user     : config.mysqlUser,
+//   password : config.mysqlPassword,
+//   database : config.mysqlDb
 // });
 
-router.get('/user',function(req,res){
-  console.log(req.user);
-  console.log(req.isAuthenticated());
-  console.log(req.session.email)
-	
-	var response = "";
-	connection.query('SELECT * FROM pr_business_user',function(error,row,fields){
-        if(error){
-            console.log(error + 'Error in query');
-        }else{
-            // console.log('no error in query');
-            // console.log(row);
-            response = row;
- 		res.end(JSON.stringify(response));
-        }
-         
-	});
 
+// connection.connect(function(error){
+// 	if(error){
+//     console.log(error);
+// 		console.log('Error in creating database connection');
+// 	}else{
+// 		console.log('Connected');
+// 	}
+// });
+
+// connection.query('USE pruchha',function(error){
+// 	if(error){
+//     console.log(error);
+// 		console.log('database not found');
+// 	}else{
+// 		console.log('database found');
+// 	}
+// });
+
+
+
+const { Client } = require('pg');
+const connection = new Client({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'pruchha',
+  password: '12345',
+  port: 5432,
 });
+connection.connect();
 
+
+router.get('/',function(req, res){
+  res.send(req.user.user.fname)
+  // res.end('logged in user ' + req.user);
+});
+//-------------------- REGISTERATION ------------------------------
 
 router.post('/register', function(req, res, next) {
-    // if(!req.body.email || !req.body.password){
-    //     res.status("400");
-    //     var data = "Invalid details!";
-    //     res.end(JSON.stringify(data));
-    // }else{
-
-      // express -validators here
-      
 
         var fname = req.body.fname;
         var lname = req.body.lname;
@@ -90,214 +103,574 @@ router.post('/register', function(req, res, next) {
         req.checkBody('fname', 'First name is required').notEmpty();
         req.checkBody('lname', 'Last name is required').notEmpty();
         req.checkBody('email', 'Email is required').notEmpty();
-        req.checkBody('email', 'Please enter valid email').isEmail();
+        // req.checkBody('email', 'Please enter valid email').isEmail();
         req.checkBody('password', 'Password is required').notEmpty();
 
         var error = req.validationErrors();
 
         if(error){
-          console.log(error);
-          res.end(JSON.stringify(error));
-
+          res.send(JSON.stringify(error));
         }else{
-           bcrypt.hash(password, saltRounds, function(err, hash) {
-
-             query = "INSERT INTO pr_business_user (fname, lname, email, password) VALUES ( '"+fname+"','"+lname+"','"+email+"','"+hash+"')";
-            // console.log(query);
-              connection.query(query,function(error,row,fields){
-                  if(error){
-                       response = {  
-                          response : 'error2'
-                      }; 
-                      console.log(error+'Error in query');
-                  }else{
-                     response = {  
-                          response : 'success'
-                        }; 
-                      connection.query('SELECT uid FROM pr_business_user WHERE email = "'+email+'"', function(error,result,fields){
-                        if(error){
-                          console.log(error);
-                        }else{
-                          console.log(result[0].uid);
-                          var user_id = result[0].uid;
-
-                          req.session.userid = user_id;
-                          req.session.email = email;
-
-                           // req.login(user_id, function(){console.log('login')
-                                
-                           // });
-                        }
-                      });
-                      res.end(JSON.stringify(response));  console.log(response)
-                  }
-                  
+          user.registerUser(email,fname,lname, password, function(error, response){
+            if(error){
+              res.json({error: error});
+            }else{
+               user.loginUser(email, password, function(error, response){
+                if(error){
+                  res.json({error: error});
+                }else{
+                  req.session.email = email;
+                  req.session.uid = response.uid;
+                  req.session.save();
+                  res.json({token: response.token, id: response.uid});
+                }
               });
-
-        });
-        
-
+            }
+          });
         }
-       
-    // }
+      
 });
 
 
+
+//-------------------- LOG IN  ------------------------------
+
 router.post('/login', function(req, res, next) {
-    if(req.body.email !== ""){
+
             email = req.body.email;
             password = req.body.password;
 
-            query = "SELECT password FROM pr_business_user WHERE email = '"+email+"'";
-            // console.log(query);
-            connection.query(query,function(error,row,fields){
-                if(error){
-                     response = {  
-                        error : 'error2'
-                    }; 
-                    console.log(error+'Error in query');
-                }else{
-                    if(row.length == 1){
-                       if(row[0].password === password){
-                              req.session.email = email;
-                              req.session.save();
-                              console.log('Session email' + req.session.email);
+        req.checkBody('email', 'Email is required').notEmpty();
+        // req.checkBody('email', 'Please enter valid email').isEmail();
+        req.checkBody('password', 'Password is required').notEmpty();
 
-                            response = {  
-                                admin : 'success',
-                                password: row[0].password
-                            }; 
-                            // res.redirect('/business_info_form');
-                       }else{
-                             response = {  
-                                admin : 'wrongPass'
-                            }; 
-                       }
-                    }else if(row.length == 0){
-                            response = {  
-                                admin : 'notPresent'
-                            };
-                    }
-                }
-                res.end(JSON.stringify(response));  
+        var error = req.validationErrors();
+
+        if(error){
+          res.send(JSON.stringify(error));
+        }else{
+            user.loginUser(email, password, function(error, response){
+              if(error){
+                console.log(error + ' error');
+                res.json({error: error});
+              }else{
+                console.log(response)
+                req.session.email = email;
+                req.session.uid = response.uid;
+                req.session.save();
+
+                res.json({token: response.token, id: response.uid});
+
+                console.log(response.uid);
+              }
             });
+        }
 
-       }else{
-         response = {  
-           error:'error'
-       };  
-       res.end(JSON.stringify(response));
-       }
+});
+
+router.post('/publish_business_page', function(req, res, next) {
+
+         if(req.user){
+          var uid = req.user.uid; 
+          var colorTheme = req.body.colorTheme; 
+
+            send_data.publishBusinessPage(uid, colorTheme, function(error, response){
+              if(error){
+                console.log(error + ' error');
+              }else{ console.log(response)
+                res.json({response:response});
+              }
+            });
+          }
 
 });
 
 
-router.get('/fetch_business_info', function(req, res, next) {console.log(req.session.email)
-            response = {};
-            // if(req.session.email){
-                // var email = req.session.email;
-                var email = '1';
-                query = "SELECT * FROM pr_business_info WHERE pr_business_email = '"+email+"'";
-                console.log(query);
-                    connection.query(query,function(error,row,fields){
-                        if(error){
-                             response = {  
-                                error : 'error2'
-                            }; 
-                            console.log(error+'Error in query');
-                        }else{
-                            if(row.length == 1){
-                               response = row;
-                            }
-                        }
-      
-                res.end(JSON.stringify(response));
-              });
-            // }
-    
-});
+
+//-------------------- SEND DATA TO DATABASE ------------------------------
 
 router.post('/send_business_info', function(req, res, next) {
-    if(req.session.email ){
-        query = "SELECT uid FROM pr_business_user WHERE email = '"+req.session.email+"'";//console.log(query);
-        conn.query(query,function(error,row,fields){//console.log(req.session.email)
-             if(error){
-                     response = {  
-                        response : 'error2'
-                    }; 
-                    console.log(error+' xxxError in query');
-                }else{
-                       if(req.body.btitle != ""){
-                              title = req.body.btitle;
-                              type = req.body.btype;
-                              description = req.body.bdescription;
-                              url = req.body.burl;
-                              email = req.session.email;
-                              id = row[0].uid;
+  if(req.user){
 
-                            query1 = "SELECT id FROM pr_business_info WHERE pr_business_email = '"+req.session.email+"'";   console.log(query1);
-                            conn.query(query1,function(error,row,fields){
-                                if(error){
-                                    console.log(error);
-                                }else{
-                                    if(row.length == 1){
-                                        query2 = "UPDATE pr_business_info SET pr_business_title='"+title+"',pr_business_type='"+type+"',pr_business_description='"+description+"',pr_business_url='"+url+"',uid='"+id+"' WHERE pr_business_email='"+email+"'";
-                                        console.log(query2);
-                                        conn.query(query2,function(error,row,fields){
-                                            if(error){
-                                                 response = {  
-                                                    response : 'error2'
-                                                }; 
-                                                console.log(error+' 111Error in query');
-                                            }else{
-                                                console.log(req.session.email +' no error in query');
-                                                response = {  
-                                                    response : '1'
-                                                }; 
-                                            }
-                                        });
-                                    }else{
-
-                                        query2 = "INSERT INTO pr_business_info (pr_business_title, pr_business_type, pr_business_description, pr_business_url, pr_business_email, uid) VALUES ('"+title+"','"+type+"','"+description+"','"+url+"','"+email+"','"+id+"')";
-                                        console.log(query2);
-                                        conn.query(query2,function(error,row,fields){
-                                            if(error){
-                                                 response = {  
-                                                    response : 'error2'
-                                                }; 
-                                                console.log(error+' 222Error in query');
-                                            }else{
-                                                console.log(req.session.email +' no error in query');
-                                                response = {  
-                                                    response : '0'
-                                                }; 
-                                            }
-                                        });
-                                    }
-                                }
-                    
-                            });
-                        }
-                    
-                    }
-        });
-        res.end(JSON.stringify(response));
+  upload(req, res, function (err) {
+    if (err) {
+      console.log(err);
+      res.end('error')
     }else{
-         response = {  
-             response : 'user not loggesin'
-        };
-        res.end(JSON.stringify(response));
-    }
+      console.log(req.body);
+
+
+      // res.json({response:'success'});
+  
+
+        var uid = req.user.uid; 
+        var title = req.body.title; 
+        var subtitle = req.body.subtitle; 
+        var about = req.body.about; 
+        var city = req.body.city; 
+        var address = req.body.address; 
+        if(req.body.url){
+           var external_url = req.body.url; 
+        }else{
+           var external_url = null;
+        }
+        if(req.body.social_links){
+           var social_links = req.body.social_links; 
+        }else{
+           var social_links = null;
+        }
+        if(req.file){
+          if(req.file.path){
+           var logo_path = './assets/uploads/logos/'+req.file.filename; 
+          }
+        }else{
+             var logo_path = null;
+          }
        
+        if(req.body.template_no){
+           var template_no = req.body.template_no; 
+        }else{
+           var template_no = 1;
+        }
+        if(req.body.template_theme_no){
+           var template_theme_no = req.body.template_theme_no; 
+        }else{
+           var template_theme_no = 'blue';
+        }
+
+        var published_status;
+          if(req.body.published_status){
+          published_status = req.body.published_status; 
+          }else{
+          published_status = 0; 
+          }
+
+        if(req.body.date_published){
+           var date_published = req.body.date_published; 
+        }else{
+           var date_published = null;
+        }
+
+        if(req.body.date_modified){
+           var date_modified = req.body.date_modified; 
+        }else{
+           var date_modified = null;
+        }
+
+
+        var data = [
+              uid, 
+              title, 
+              subtitle, 
+              about, 
+              city, 
+              address, 
+              external_url, 
+              social_links, 
+              logo_path, 
+              template_no, 
+              template_theme_no, 
+              published_status, 
+              date_published,
+              date_modified
+            ];
+
+
+          query = "SELECT * FROM pr_business.pr_business_info WHERE uid = '"+uid+"'";  
+
+            connection.query(query,function(error,result){
+                if(error){
+                    console.log(error);
+                }else{
+                    if(result.rows.length == 1){
+                        send_data.updateBusinessInfo(data, function(error, response){
+                          if(error){
+                            console.log(error)
+                          }else{//console.log(response)
+                            res.json({response: response, id: uid});
+                          }
+                        });
+
+                    }else if(result.rows.length == 0){
+                        send_data.sendBusinessInfo(data, function(error, response){
+                           if(error){
+                            console.log(error)
+                          }else{
+                            res.json({response: response, id: uid});
+                          }
+                        });
+                  }
+              }
+  
+          });
+
+         }
+  })
+
+  }
     
 });
 
-// passport.serializeUser(function(user_id, done) {
-//   done(null, user_id);
-// });
+router.post('/upload-gallery-images', function(req, res, next){
+  if(req.user){
+        uploadGalleryImages(req, res, function (err) {
+        if (err) {
+          // console.log(err);
+          // res.end('error');
+        }else{
+          console.log(req.file);
+      console.log(req.files)
+     }
+    });
+  }
+});
 
-// passport.deserializeUser(function(user_id, done) {
-//     done(null, user_id);
-// });
+router.post('/send-additional-info', function(req, res, next){
+   if(req.user){
+
+      var uid = req.user.uid; 
+      var business_id = req.body.business_id; 
+      var features_t = req.body.features_t; 
+      var features_d = req.body.features_d; 
+      var colorTheme = req.body.colorTheme; 
+
+      var data = [
+      business_id,
+      features_t,
+      features_d,
+      colorTheme
+      ];
+
+      send_data.updateBusinessAdditionalInfo(business_id, data, function(error, response){
+        if(error){
+          console.log(error)
+        }else{
+          console.log(response)
+          res.end(JSON.stringify(response));
+        }
+      });
+
+          }
+
+});
+
+
+//-------------------- CHECK AUTHORIZATION STATUS ------------------------------
+
+
+router.post('/check-business-published-status', function(req, res, next) {
+            response = {};
+
+            uid = req.body.userId;
+            title = req.body.businessTitle;
+
+          if(uid){
+            user.authorizeBusiness(uid, title, function(error, response){
+              if(error){
+                console.log(error)
+              }else{
+                console.log(response)
+                res.end(JSON.stringify(response));
+              }
+            });
+          }
+});
+
+
+router.post('/check-user-auth-status', function(req, res, next) {console.log(req.user)
+
+            if(!req.user){
+              // res.status(401).json({response:'user not authenticated'});
+              res.end(JSON.stringify({response:'user not authenticated'}));
+            }else{
+              if(req.user.uid != req.body.userId){
+                // res.status(401).json({response:'user not authenticated'});
+                res.end(JSON.stringify({response:'user not authenticated'}));
+              }else{
+                res.status(200).json({response:'user authenticated'});
+
+              }
+
+            }
+
+});
+
+router.get('/check-user-id', function(req, res, next) {
+
+            if(!req.user){
+               response = {
+                response: 'user not authenticated'
+                };
+
+            }else{
+            
+            uid = req.user.uid;
+                response = {
+                  response: uid
+                };
+            }
+            res.end(JSON.stringify(response));
+
+});
+
+
+
+//-------------------- FETCH DATA FROM DATABASE ------------------------------
+
+router.get('/user',function(req,res){
+
+  if(req.user){
+    if(req.user.role == 'admin'){
+        var response = "";
+        connection.query('SELECT * FROM pr_business.pr_business_user_account', function(error,res){
+          if(error){
+              console.log(error + 'Error in query');
+          }else{
+              response = res.rows[0];
+          res.end(JSON.stringify(response));
+        }
+         
+      });
+    }
+    
+  }else{
+     res.status(401).json({response:'user not authenticated'});
+  }
+
+});
+
+
+router.post('/get_uid_from_token', function(req, res, next){console.log(req.user)
+    if(req.user){
+            var uid = req.user.user.uid;
+            var response = {
+              uid : uid
+            }
+            console.log(response)
+            res.end(JSON.stringify(response));
+    }
+});
+
+router.post('/fetch_business_info', function(req, res, next) { console.log(req.user)
+  var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
+  // console.log(ip)
+        // if(req.user){
+          // var uid = req.user.uid;
+
+          // var business_id = null;
+
+          
+          if(req.user){
+            var uid = req.user.uid;
+          }else{
+            var uid = req.body.uid;
+          }
+          console.log(uid)
+
+            get_data.getBusinessInfo(uid, function(error, response){
+              if(error){
+                console.log(error + ' error');
+              }else{
+                console.log(response)
+                 res.end(JSON.stringify(response));
+              }
+            });
+
+        // }else{
+
+          // var uid = req.user.uid;
+
+          // var business_id = null;
+          //   get_data.getBusinessInfo(uid, business_id, function(error, response){
+          //     if(error){
+          //       console.log(error + ' error');
+          //     }else{
+          //        res.end(JSON.stringify(response));
+          //     }
+          //   });
+
+
+          // var response = {
+          //   error : ' user Not authenticated'
+          // };
+          // res.end(JSON.stringify(response));
+
+        // }
+   
+});
+
+router.post('/fetch_additional_business_info', function(req, res, next) {
+        // if(req.user){
+        //   var uid = req.user.uid;
+
+          var business_id = req.body.business_id;
+
+            get_data.getBusinessAdditionalInfo(business_id, function(error, response){
+              if(error){
+                console.log(error + ' error');
+              }else{
+                 res.end(JSON.stringify(response));
+              }
+            });
+
+        // }else{
+
+          // var uid = req.user.uid;
+
+          // var business_id = null;
+          //   get_data.getBusinessInfo(uid, business_id, function(error, response){
+          //     if(error){
+          //       console.log(error + ' error');
+          //     }else{
+          //        res.end(JSON.stringify(response));
+          //     }
+          //   });
+
+
+          // var response = {
+          //   error : ' user Not authenticated'
+          // };
+          // res.end(JSON.stringify(response));
+
+        // }
+   
+});
+
+router.get('/fetch_business_stats', function(req, res, next) {
+
+        if(req.user){
+          var uid = req.user.uid;
+
+          var business_id = null;
+
+            get_data.getBusinessStats(uid, business_id, function(error, response){
+              if(error){
+                console.log(error + ' error');
+              }else{
+                 res.end(JSON.stringify(response));
+              }
+            });
+
+        }else{
+          var response = {
+            error : ' user Not authenticated'
+          };
+          res.end(JSON.stringify(response));
+
+        }
+
+});
+
+router.post('/fetch_visitor_info', function(req, res, next) {
+
+        if(req.user){
+          var uid = req.user.uid;
+
+          var business_id = req.body.business_id;
+
+            get_data.getVisitorsInfo(uid, business_id, function(error, response){
+              if(error){
+                console.log(error + ' error');
+              }else{console.log(response)
+                 res.end(JSON.stringify(response));
+              }
+            });
+
+        }else{
+          var response = {
+            error : ' user Not authenticated'
+          };
+          res.end(JSON.stringify(response));
+
+        }
+
+});
+
+router.get('/fetch_notifications', function(req, res, next) {
+
+        if(req.user){
+          var uid = req.user.uid;
+
+            get_data.getRecentNotifications(uid, function(error, response){
+              if(error){
+                console.log(error + ' error');
+              }else{
+                 res.end(JSON.stringify(response));
+              }
+            });
+
+        }else{
+          var response = {
+            error : ' user Not authenticated'
+          };
+          res.end(JSON.stringify(response));
+
+        }
+
+});
+
+router.get('/fetch_clients_contacts', function(req, res, next) {
+
+        if(req.user){
+          var uid = req.user.uid;
+
+            get_data.getRecentNotifications(uid, function(error, response){
+              if(error){
+                console.log(error + ' error');
+              }else{
+                 res.end(JSON.stringify(response));
+              }
+            });
+
+        }else{
+          var response = {
+            error : ' user Not authenticated'
+          };
+          res.end(JSON.stringify(response));
+
+        }
+
+});
+
+
+router.post('/update_page_views', function(req,res,next) {console.log(req.body.uid)
+    var uid = req.body.uid;
+    var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
+
+    send_data.updatePageViews(uid,ip, function(error, response){
+      if(error){
+        console.log(error)
+      }else{
+         res.end(JSON.stringify(response));
+      }
+    });
+
+
+});
+
+
+router.post('/client_contact_submit', function(req,res,next) {//console.log(req.ip)
+    var uid = req.body.uid;
+    var contact_name = req.body.contact_name;
+    var contact_email = req.body.contact_email;
+    var contact_details = req.body.contact_details;
+
+    data=[
+    uid,
+    contact_name,
+    contact_email,
+    contact_details
+    ]
+
+    send_data.clientContactSubmit(data, function(error, response){
+      if(error){
+        console.log(error)
+      }else{
+         res.end(JSON.stringify(response));
+      }
+    });
+
+
+});
 
 module.exports = router;

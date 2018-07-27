@@ -1,23 +1,116 @@
-<body>
+
 	<div class="wrapper">
-	<app-template-header [theme]="colorTheme" [title]="pr_business_title" [logoPath]="pr_business_logo_path"></app-template-header>
-	<div class="pr-ct-select-list">
-		<span class="pr-ct-select" id="red" style="background-color: #e87979"></span>
-		<span class="pr-ct-select" id="green" style="background-color: #52c58b"></span>
-		<span class="pr-ct-select" id="blue" style="background-color: #57bddb"></span>
-		<span class="pr-ct-select" id="black" style="background-color: #393737"></span>
+		<div class="text-center" style="padding:0.5em;" *ngIf="isAutherized">
+			<p style="font-style:italic; margin:0px; color:grey; margin-bottom:1em;">This page is preview of final web page. You can edit information provided on web page which will appear on final page.Once you are done with editing, just click on submit.</p>
+	  		<div class="text-center">
+	  			<!-- <button class="btn btn-sm btn-primary pr-t-edit-final" (click)="onSave()">Edit</button> -->
+	  			<button class="btn btn-sm btn-primary pr-t-publish-final" (click)="onPublish()" *ngIf="!pr_business_published_status">Publish</button>
+	  		</div>
+	  	</div>
+
+		<app-template-header [templateId]="templateId" [theme]="colorTheme" [title]="pr_business_title" [subtitle]="pr_business_subtitle" [logoPath]="pr_business_logo_path"></app-template-header>
+		<div class="pr-ct-select-list" *ngIf="isAutherized">
+			<span class="pr-ct-select" id="red" style="background-color: #e87979"></span>
+			<span class="pr-ct-select" id="green" style="background-color: #52c58b"></span>
+			<span class="pr-ct-select" id="blue" style="background-color: #57bddb"></span>
+			<span class="pr-ct-select" id="black" style="background-color: #393737"></span>
+		</div>
 	</div>
+
+	<div class="container">
+    <div class="row">
+      <div [class.col-md-12]="templateOne" [class.col-md-4]="templateTwo">
+		<section class="pr-t-section">
+			<app-template-about [templateId]="templateId" [about]="pr_business_about"></app-template-about>
+      <!-- <app-template-about [templateId]="templateId" [about]="pr_business_about" (click)="openModal(template, templatelong, $event, 'about')"></app-template-about> -->
+		</section>
+  </div>
+  <div [class.col-md-12]="templateOne" [class.col-md-8]="templateTwo">
+		<section class="pr-t-section">
+  			<app-template-features [templateId]="templateId" [features_titles]="features_titles" [features_details] ="features_details" (click)="openModal(template, templatelong, $event,'features')"></app-template-features>
+		</section>
+  </div>
+	<!-- 	<section class="pr-t-section">
+			<app-template-gallery [templateId]="templateId"></app-template-gallery>
+		</section> -->
 	</div>
-<div class="container">
-	<section class="pr-t-section">
-		<app-template-about [about]="pr_business_description"></app-template-about>
-	</section>
-	<section class="pr-t-section">
-		<app-template-features></app-template-features>
-	</section>
-	<section class="pr-t-section">
-		<app-template-gallery></app-template-gallery>
-	</section>
 </div>
-<app-template-footer></app-template-footer>
-</body>
+
+<!-- <app-template-contact-us></app-template-contact-us> -->
+
+<app-template-footer [templateId]="templateId" [city]="pr_business_city" [address]="pr_business_address" [social_links]="pr_business_social_links" [external_url]="pr_business_external_url"></app-template-footer>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{modalTitle}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  	<div class="container-fluid">
+  	<form class="form-horizontal pr-info-form" [formGroup]="form">
+  		<div class="col-md-12">
+  		  <div class="form-group">
+          <label class="col-md-3 control-label">Feature 1 - Title</label>
+          <div class="col-md-9">
+             <input [ngModel]="feature1_t" value='feature1_t' class="form-control pr-info-input" formControlName="feature_1_title" placeholder="Feature 1-title">
+          </div>
+        </div>
+              <div class="form-group">
+          <label class="col-md-3 control-label">Feature 1 - Details</label>
+          <div class="col-md-9">
+             <textarea  name="string" class="form-control" [ngModel]="feature1_d" formControlName="feature_1_details" placeholder="Feature 1-details"></textarea> 
+          </div>
+        </div>
+              <div class="form-group">
+          <label class="col-md-3 control-label">Feature 2 - Title</label>
+          <div class="col-md-9">
+             <input [ngModel]="feature2_t" value='feature2_t' class="form-control pr-info-input" formControlName="feature_2_title" placeholder="Feature 2-title">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Feature 2 - Details</label>
+          <div class="col-md-9">
+              <textarea name="string" class="form-control" [ngModel]="feature2_d" formControlName="feature_2_details" placeholder="Feature 2-title" #details></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Feature 3 - Title</label>
+          <div class="col-md-9">
+             <input [ngModel]="feature3_t" value ='feature3_t' class="form-control pr-info-input" formControlName="feature_3_title" placeholder="Feature 3-title">
+          </div>
+        </div>
+          <div class="form-group">
+          <label class="col-md-3 control-label">Feature 3 - Details</label>
+          <div class="col-md-9">
+              <textarea name="string" class="form-control" [ngModel]="feature3_d" formControlName="feature_3_details" placeholder="Feature 3-details"></textarea>
+          </div>
+        </div>
+  		  <button type="button" class="btn" (click)="onSave(template)" [disabled]="!form.valid">Save</button>
+  		</div>
+  	</form>
+  	</div>
+  </div>
+</ng-template>
+
+<!-- <ng-template #templatelong>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{modalTitle}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  	<div class="container-fluid">
+  	<form class="form-horizontal pr-info-form">
+  		<div class="col-md-6 col-md-offset-3">
+  		  	<div class="form-group">
+                <textarea [value]='content' class="form-control pr-info-input"></textarea> 
+            </div>
+  		<button type="submit" class="btn">Submit</button>
+  		</div>
+  	</form>
+  	</div>
+  </div>
+</ng-template> -->

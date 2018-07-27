@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 text-center">
+      <h3>Contact us</h3>
+  <form class="form-horizontal pr-contact-us-form" [formGroup]="form">
+  		<div class="col-md-12">
+  		  <div class="form-group">
+          <!-- <label class="col-md-3 control-label">Feature 1 - Title</label> -->
+          <!-- <div class="col-md-9"> -->
+             <input value='feature1_t' class="form-control pr-info-input" formControlName="feature_1_title" placeholder="Name">
+          <!-- </div> -->
+        </div>
+
+        <div class="form-group">
+          <!-- <label class="col-md-3 control-label">Feature 2 - Title</label> -->
+          <!-- <div class="col-md-9"> -->
+             <input value='feature2_t' class="form-control pr-info-input" formControlName="feature_2_title" placeholder="Email">
+          <!-- </div> -->
+        </div>
+
+        <div class="form-group">
+          <!-- <label class="col-md-3 control-label">Feature 1 - Details</label> -->
+          <!-- <div class="col-md-9"> -->
+             <textarea  name="string" class="form-control" formControlName="feature_1_details" placeholder="Details"></textarea> 
+          <!-- </div> -->
+        </div>
+  		  <button type="button" class="btn" (click)="onSave(template)" [disabled]="!form.valid">Save</button>
+  		</div>
+  	</form>
+  </div>
+  <div class="col-md-4"></div>

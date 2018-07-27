@@ -1,3 +1,34 @@
-<p>
-  sidebar works!
-</p>
+<div class="pr-sidebar-panel">
+	<!-- <div class="pr-sidebar-header"><h4>Recent Notifications <span class="pr-sidebar-icon pull-right"></span></h4></div> -->
+
+			<div class="text-right" id="toggle-sidebar"><a  (click)="isCollapsed = !isCollapsed"><i class="fa fa-bars"></i></a></div>
+			
+	<div class="pr-sidebar-body collapse" [collapse]="isCollapsed">
+		<ul class="pr-dashboard-sidebar-list">
+			<!-- <li style="border:0;">
+				
+			</li> -->
+			<li>
+				<a routerLink="/{{user_id}}/dashboard" routerLinkActive="active"><i class="fa fa-tachometer"></i>Dashboard</a>
+			</li>
+			<li>
+				<a routerLink="/{{user_id}}/edit-business-info" routerLinkActive="active"><i class="fa fa-edit"></i>Edit Information</a>
+			</li>
+			<li>
+				<a routerLink="/{{user_id}}/templates/1" routerLinkActive="active"><i class="fa fa-pencil-square"></i>Update Template</a>
+			</li>
+			<li>
+				<a routerLink="" routerLinkActive="active"><i class="fa fa-line-chart"></i>Stats</a>
+			</li>
+		<!-- 	<li>
+				<a routerLink="" routerLinkActive="active"><i class="fa fa-bell"></i>Notifications<i class="fa fa-circle"></i><p>1</p></a>
+			</li> -->
+			<li>
+				<a routerLink="o" routerLinkActive="active"><i class="fa fa-envelope"></i>Contacts<i class="fa fa-circle" style="display: none;"></i><p style="display: none;">1</p></a>
+			</li>
+			<li>
+				<a routerLink="/pages/{{user_id}}/{{business_title}}" routerLinkActive="active"><i class="fa fa-external-link"></i>Visit web page</a>
+			</li>
+	</ul>
+</div>
+</div>

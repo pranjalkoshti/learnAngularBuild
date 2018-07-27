@@ -1,4 +1,10 @@
-
+.container-fluid{
+	padding: 0;
+	background-color: #eeeeee;
+}
+.pr-sidebar-column{
+	padding: 0;
+}
 .pr-main-row{
 	padding-top: 7%;
 }
@@ -7,11 +13,19 @@
 	padding-top: 2em;
 }
 
-.form-group .pr-info-input{
+/*.form-group .pr-info-input{
 	border:none;
 	box-shadow: none;
 	outline: none;
 	border-bottom: 1px solid #e7e7e7;
+	border-radius: 0px;
+}*/
+
+.form-group .pr-info-input{
+	border:none;
+	box-shadow: none;
+	outline: none;
+	border: 1px solid #e7e7e7;
 	border-radius: 0px;
 }
 
@@ -19,4 +33,10 @@
 	background-color: #57d6eb;
 	border-color: transparent;
 	color: white;
+}
+/*.form-group .ng-invalid{
+	border:1px solid red;
+}*/
+.alert-danger p{
+	margin: 0px;
 }

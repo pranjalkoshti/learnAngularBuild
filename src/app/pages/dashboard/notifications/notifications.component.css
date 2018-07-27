@@ -1,21 +1,38 @@
+.pr-notifications-row{
+	margin-top: 1em;
+}
+.pr-notifications-panel{
+	background-color: white;
+}
 .pr-noti-header{
-	padding: 0.5em;
-	background-color: #df0808;
-	color: white;
+	padding: 1em;
+	/*background-color: #df0808;*/
+	color: #08225e;
+	border-bottom: 1px solid #eeeeee;
 }
 .pr-noti-body{
-	padding:1em 0.5em;
+	/*padding:1em;*/
 }
 .pr-dashboard-notifications-list{
 	list-style: none;
 	padding: 0px;
 	margin: 0px;
 }
-
 .pr-dashboard-notifications-list li{
-	margin-bottom: 1em;
+	padding: 1em;
+	/*margin-bottom: 1em;*/
 	color: grey;
+}
+.pr-dashboard-notifications-list li:hover{
+	background-color: #eeeeee;
 }
 .pr-noti-icon{
 	margin-right: 0.5em;
+}
+.pr-panel-border{
+	border: 1px solid #d5d4d4;
+}
+.panel{
+	box-shadow: none;
+	border-radius: 0;
 }

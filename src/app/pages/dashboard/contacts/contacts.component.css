@@ -1,0 +1,15 @@
+.pr-contacts-row{
+	margin-top: 1em;
+}
+.panel{
+	box-shadow: none;
+	border-radius: 0;
+}
+.pr-panel-border{
+	border: 1px solid #d5d4d4;
+}
+.pr-contacts-header{
+	padding: 1em;
+	border-bottom: 1px solid #eeeeee;
+	color: #08225e;
+}

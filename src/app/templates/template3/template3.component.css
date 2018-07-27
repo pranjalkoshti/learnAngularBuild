@@ -1,0 +1,257 @@
+/*body{
+  background-color:    #fafbfb ;
+  font-family: 'Quicksand', sans-serif;
+}*/
+h1,h2,h3{
+  font-weight: 400;
+}
+p{
+  word-wrap: break-word;
+  margin:0px;
+}
+hr{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.btn{
+  background-color: #04a8b3 ;
+  color: white;
+  border-radius: 0;
+  margin-top: 12px;
+}
+.btn:hover{
+  box-shadow: 2px 2px 3px  #858585 ;
+  color: white;
+}
+.pr-ct-select {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 0.5em;
+  float: right;
+}
+.pr-t3-edit-div{
+  padding:0.5em;
+  color: #8b8b8b;
+}
+
+/*red theme*/
+.red-cr-bg{
+  background-color: #e87979;
+}
+.red-cr-heading-color{
+  color: white;
+}
+
+/*green theme*/
+.green-cr-bg{
+  background-color: #52c58b;
+}
+.green-cr-heading-color{
+  color: white;
+}
+
+/*blue theme*/
+.blue-cr-bg{
+  background-color: #00929c;
+}
+.blue-cr-heading-color{
+  color: white;
+}
+
+/*grey theme*/
+.black-cr-bg{
+  background-color: #393737;
+}
+.black-cr-heading-color{
+  color: white;
+}
+
+/*navbar*/
+.navbar{
+  border: none !important;
+  border-radius: 0;
+  height: 550px !important;
+  padding-top: 25px;
+  /*background-image: url('./image/header.jpg');*/
+  background-size: 100% ;
+  background-repeat: no-repeat;
+}
+.navbar a{
+  color:white !important;
+  font-size: 20px;
+}
+.navbar a:hover{
+  color: grey !important;
+}
+.navbar-brand{
+  font-size: 23px;
+}
+.pr-t3-customers-reviews{
+  /*background-color: #00929c ;*/
+  padding: 50px;
+  color:white;
+}
+
+/*header*/
+
+div.text-header{
+  width:auto;
+  margin:auto;
+  margin-top:15%;
+  /*margin-left:5%;*/
+  text-align: center;
+  color:white;
+}
+.text-header h2{
+  /*background-color: black;*/
+  padding: 10px;
+}
+.text-header h1{
+  padding: 10px;
+  /*background-color: white;
+  color:black;*/
+}
+/*.row-products{
+  margin-top:8%;
+
+}*/
+.pr-t3-customers-reviews{
+  margin-top:2%;
+}
+
+.centered {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:white;
+}
+
+.pr-t3-footer-menu{
+  padding: 0;
+}
+
+/*footer  */
+footer{
+  background-color: black;
+  padding-top: 20px;
+}
+.footer ul{
+  list-style: none;
+}
+.footer li{
+  padding: 5px;
+}
+.footer,.footer a{
+  color: #888989;
+}
+.footer-bottom a{
+  color: #888989;
+  padding: 5px;
+  padding-right: 50px;
+}
+.pr-t3-logo-div{
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  height: 150px;
+  padding: 2em;
+}
+.pr-t3-logo-div img{
+  position: absolute;
+  max-height: 70%;
+  max-width: 70%;
+  height: auto;
+  width: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  margin-left: 0;
+}
+/*icons*/
+
+/*.w3-wide {
+  letter-spacing: 10px;
+}
+.w3-hover-opacity {
+  cursor: pointer;
+}
+*/
+.pr-t3-footer-social-bar .fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.pr-t3-footer-social-bar .fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.pr-t3-footer-social-bar .fa{
+  color:   #a4a0a0 ;
+
+}
+.arrow{
+  position: absolute;
+
+}
+.img-main{
+  position: relative;
+}
+.panel{
+  border: none;
+}
+div.bg-header{
+  margin-top:5%;
+}
+.more-info{
+  margin-top:25%;
+}
+.contact-form{
+  margin-top: 40px;
+}
+.pr-t3-footer-social-bar{
+  padding:20px;
+}
+
+/*@media*/
+
+
+@media screen and (max-width: 750px) {
+  .navbar{
+      height: 350px !important;
+  }
+  .row-about {
+    color:   #363636;
+  }
+  .product-list{
+      width:90%;
+      margin: auto;
+  }
+  .text-header h2{
+    background-color: black;
+    padding: 10px;
+    font-size: 15px;
+  }
+  .text-header h1{
+    font-size: 20px;
+  }
+  div.text-header{
+    width:20%;
+    color:white;
+  }
+}

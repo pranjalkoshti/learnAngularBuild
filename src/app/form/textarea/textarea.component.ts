@@ -7,11 +7,11 @@ import { AbstractControl } from '@angular/forms';
   styleUrls: ['./textarea.component.css']
 })
 export class TextareaComponent implements OnInit {
-
-
+	
 	@Input() name: string;
 	@Input() type: string;
 	@Input() control: AbstractControl;
+  @Input() value: string;
 
   constructor() { }
 

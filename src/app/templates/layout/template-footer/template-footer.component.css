@@ -1,19 +1,24 @@
 footer{
-  background-color: #2e2d2d;
-  padding-top: 20px;
+  background-color: #f8f8f8;
+  padding-top: 25px;
   margin-top: 50px;
+  border: 1px solid #eeeeee;
+}
+h3{
+  margin-top: 0px;
 }
 .footer ul{
   list-style: none;
 }
 .footer li{
   padding: 5px;
-
 }
 .footer,.footer a{
   color: #888989;
 }
-
+.footer a:hover{
+  color: #5f6262;
+}
 .pr-t3-btn{
   border-radius: 0;
 }
@@ -21,9 +26,35 @@ footer{
    box-shadow: 2px 1px 5px 2px rgba(0, 0, 0, 0.50);
   color: white;
 }
-
 .footer-bottom a{
-  color: #888989;
+  color: #727272;
   padding: 5px;
   padding-right: 50px;
+}
+.pr-footer-social-links .fa{
+  padding:0.2em;
+  font-size: 2em;
+}
+
+.pr-footer-social-links{
+  /*border-top: 1px solid grey;*/
+}
+.fa-facebook-square{
+  color: #727272;
+}
+.fa-google-plus-square{
+  color: #727272;
+}
+.fa-facebook-square:hover{
+  color: #4267b2;
+}
+.fa-google-plus-square:hover{
+  color: #df4c42;
+}
+.pr-footer-copyright{
+  font-size:12px;
+  text-align:center;
+  margin:0px;
+  color:grey; 
+  padding: 0.5em;
 }

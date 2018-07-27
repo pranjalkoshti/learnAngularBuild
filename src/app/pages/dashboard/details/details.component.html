@@ -1,0 +1,124 @@
+<!-- <div class="row">
+	<div class="col-md-4">
+	<div class="panel">
+		<div class="pr-stats-card-left">
+			<p class="pr-stat-icon"><i class="fa fa-line-chart"></i></p>
+		</div>
+		<div class="pr-stats-card-right">
+			<h5>Recent Views</h5>
+			<p>ff</p>
+		</div>
+	</div>
+</div>
+<div class="col-md-4">
+	<div class="panel">
+		<div class="pr-stats-card-left">
+			<p class="pr-stat-icon"><i class="fa fa-line-chart"></i></p>
+		</div>
+		<div class="pr-stats-card-right">
+			<h5>Recent Views</h5>
+			<p>ff</p>
+		</div>
+	</div>
+</div>
+<div class="col-md-4">
+	<div class="panel">
+		<div class="pr-stats-card-left">
+			<p class="pr-stat-icon"><i class="fa fa-line-chart"></i></p>
+		</div>
+		<div class="pr-stats-card-right">
+			<h5>Recent Views</h5>
+			<p>ff</p>
+		</div>
+	</div>
+</div>
+</div> -->
+
+<!-- <div *ngIf = 'stat; else notRegistered'>
+	<div class="row pr-panel-border text-center">
+		<div class="panel pr-business-cover">
+			<h2><a routerLink="{{publicUrl}}">{{business_title}}</a></h2>
+			<h3>{{business_subtitle}}</h3>
+		</div>
+		<div class="panel pr-sub-panel">
+			<h2>About</h2>
+			<p>{{business_about}}</p>
+		</div>
+		<div class="panel pr-stats-bar">
+			<div class="pr-stats">
+				<h5>Page views</h5>
+				<h2>{{page_views}}</h2>
+			</div>
+			<div class="pr-votes">
+				<h5>No of UpVotes</h5>
+				<h2>{{upvotes}}</h2>
+			</div>
+			<div class="pr-contacts">
+				<h5>No of Contacts</h5>
+				<h2>0</h2>
+			</div>
+		</div>
+		<div class="panel text-left pr-info-bar">
+			<div class="pr-published-date">
+				<span class="title">Published On:</span><span class="date">{{published_date | date:'medium'}}</span>
+			</div>
+			<div class="pr-page-url">
+				<span class="title">Visit public page :</span><span class="url"><a routerLink="{{publicUrl}}">{{business_title}}</a></span>
+			</div>
+		</div>
+	</div>
+</div> -->
+
+<div *ngIf = 'stat; else notRegistered'>
+	<!-- <div class="row "> -->
+		<div class="col-md-12">
+			<div class="panel pr-details-bar pr-panel-border">
+				<div class="pr-details-left-side">
+				<div class="pr-business-cover">
+					<img src="{{business_logo_url}}" class="">
+				</div>
+				</div>
+				<div class="pr-details-right-side">
+				<div class="pr-sub-panel text-left">
+					<h2><a routerLink="{{publicUrl}}">{{business_title}}</a></h2>
+					<h3>{{business_subtitle}}</h3>
+					<h3>About</h3>
+					<p>{{business_about}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- </div> -->
+	<!-- <div class="row"> -->
+		<div class="col-md-12">
+		<div class="panel pr-panel-border pr-stats-bar">
+			<div class="pr-stats">
+				<h5>Page views</h5>
+				<h2>{{page_views}}</h2>
+			</div>
+			<div class="pr-votes">
+				<h5>No of UpVotes</h5>
+				<h2>{{upvotes}}</h2>
+			</div>
+			<div class="pr-contacts">
+				<h5>No of Contacts</h5>
+				<h2>0</h2>
+			</div>
+		</div>
+		<div class="panel pr-panel-border text-left pr-info-bar">
+			<div class="pr-published-date">
+				<span class="title">Published On:</span><span class="date">{{published_date | date:'medium'}}</span>
+			</div>
+			<div class="pr-page-url">
+				<span class="title">Visit public page :</span><span class="url"><a routerLink="{{publicUrl}}">{{business_title}}</a></span>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- </div> -->
+<ng-template #notRegistered>
+	<div class="col-md-12" style="padding: 1em;">
+			<h5>You business is not yet registered with pruchha. Please follow link provided to register your business. Click on edit information from sidebar to register.</h5>
+			<!-- <a routerLink = "/{{userId}}/edit-business-info">Register business</a> -->
+	</div>
+</ng-template>

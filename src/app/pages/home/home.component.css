@@ -3,6 +3,10 @@
 	/*background-color: #57d6eb ;*/
 	background-color: #406acb;
 	padding: 10em;
+	/*position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 10%;*/
 }
 .pr-home-section{
 	padding: 3em;
@@ -27,7 +31,8 @@
 	color: #406acb;
 	font-size: 1.2em;
 }
-.pr-overlay-left-div{
+
+.pr-overlay-left-div-one{
 	height: 250px;
 	width: 350px;
 	background-color: #1dca80;
@@ -66,8 +71,6 @@
 	margin-top: 70px;
 	background-color: #ffba48;
 }
-
-
 .pr-overlay-left-div-two{
 	height: 250px;
 	width: 350px;
@@ -86,4 +89,13 @@
 }
 .pr-overlay-left-div-two .pr-overlay-div-head{
 	background-color: #f7502c;
+}
+
+@media only screen and (max-width: 600px) {
+    .pr-overlay-left-div{
+		display: none;
+	}
+	.pr-head-section{
+	    padding: 4em;
+	}
 }

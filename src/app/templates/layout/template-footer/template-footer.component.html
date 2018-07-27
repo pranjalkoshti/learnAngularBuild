@@ -1,7 +1,7 @@
 <!-- START | FOOTER -->
 <footer>
 	<div class="container footer" id="contact">
-  		<div class="col-md-4">
+  <!-- 		<div class="col-md-4">
 			<ul>
 			  <li><a href="#">Home</a></li>
 			  <li><a href="#">About us</a></li>
@@ -12,17 +12,49 @@
 		      <li><a href="#">Gallery</a></li>
 		      <li><a href="#">Features</a></li>
 		    </ul>
-		</div>
+		</div> -->
 		 <div class="col-md-4">
-		   <h3>Address</h3>
-		   <p>Pune - 411 038 Maharashtra (India).</p>
+		   <h3>Contact Us</h3>
+		    <p>{{city}}</p>
+		   <p>{{address}}</p>
+		   <p>{{email}}</p>
+		 </div>
+		 <div class="col-md-4"></div>
+		 <div class="col-md-4">
+		 	{{msg}}
+		 	<h3>Write us </h3>
+		<form class="form-horizontal pr-contact-us-form" [formGroup]="form">
+  		<div class="col-md-12">
+  		  <div class="form-group">
+          <!-- <label class="col-md-3 control-label">Feature 1 - Title</label> -->
+          <!-- <div class="col-md-9"> -->
+             <input class="form-control pr-info-input" formControlName="contact_name" placeholder="Name">
+          <!-- </div> -->
+        </div>
+
+        <div class="form-group">
+          <!-- <label class="col-md-3 control-label">Feature 2 - Title</label> -->
+          <!-- <div class="col-md-9"> -->
+             <input class="form-control pr-info-input" formControlName="contact_email" placeholder="Email">
+          <!-- </div> -->
+        </div>
+
+        <div class="form-group">
+          <!-- <label class="col-md-3 control-label">Feature 1 - Details</label> -->
+          <!-- <div class="col-md-9"> -->
+             <textarea  name="string" class="form-control" formControlName="contact_details" placeholder="Details"></textarea> 
+          <!-- </div> -->
+        </div>
+  		  <button type="button" class="btn" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
+  		</div>
+  	</form>
 		 </div>
 	</div>
-	<div class="container text-center">
-		<a href="#"><i class="fa fa-facebook-square fa-lg " aria-hidden="true" title="facebook"></i></a>
-	    <a href="#"> <i class="fa fa-linkedin-square fa-lg" aria-hidden="true" title="linkedin"></i></a>
-	    <a href="#"> <i class="fa fa-google-plus-square fa-lg" aria-hidden="true" title="google+"></i></a>
-	    <a href="#"><i class="fa fa-github-square fa-lg" aria-hidden="true" title="github"></i></a>
+	<div class="text-center pr-footer-social-links">
+		<a href="{{social_links.indexOf(',') >= 0 ? social_links.split(',')[0] : social_links}}"><i class="fa fa-facebook-square fa-lg " aria-hidden="true" title="facebook"></i></a>
+	    <!-- <a href="#"> <i class="fa fa-linkedin-square fa-lg" aria-hidden="true" title="linkedin"></i></a> -->
+	    <a href="{{social_links.indexOf(',') >= 0 ? social_links.split(',')[1] : social_links}}"> <i class="fa fa-google-plus-square fa-lg" aria-hidden="true" title="google+"></i></a>
+<!-- 	    <a href="#"><i class="fa fa-github-square fa-lg" aria-hidden="true" title="github"></i></a> -->
 	</div>
-		<p style="font-size:12px;text-align: center;margin:0px;color:grey;">All Copyrights are reserverd </p>
+		<p class="pr-footer-copyright">&copy; All Copyrights are reserverd </p>
 </footer>

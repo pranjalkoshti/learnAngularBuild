@@ -1,26 +1,27 @@
 	<div class="row row-products">
-	  <div class="col-md-12 text-center products" >
+	  <div class="col-md-12 text-center products">
 		<h1 class="pr-t3-section-head">Key Features</h1>
-		<div class="col-md-4 product-list">
+
+		<div [class.col-md-4]="themeOne" [class.col-md-6]="themeTwo" [class.col-md-offset-3]="themeTwo" class="product-list">
 		  <div class="panel product-image ">
-		 	 <div class="panel-body"><h4 class="pr-t3-edit-input" data-editable>Feature 1 - Title</h4></div>
-		 	 <div class="pr-t3-feature-description pr-t3-text-long" data-editable>Add short description about features.Make this description short but effective</div>
+		 	 <div class="panel-body"><h4 class="pr-t-edit-input">{{features_titles.indexOf(',') >= 0 ? features_titles.split(',')[0] : features_titles}}</h4></div>
+		 	 <div class="pr-t3-feature-description pr-t-text-long">{{features_details.indexOf(',') >= 0 ? features_details.split(',')[0] : features_details}}</div>
 			<!-- <img src="./image-portfolio/icon3.png" alt="" height="25%" width="25%"> -->
 		   </div>
 		</div>
 
-		<div class="col-md-4 product-list">
+		<div [class.col-md-4]="themeOne" [class.col-md-6]="themeTwo" [class.col-md-offset-3]="themeTwo" class="product-list">
 		    <div class="panel product-image">
-		    <div class="panel-body"><h4 class="pr-t3-edit-input" data-editable>Feature 2 - Title</h4></div>
-		    <div class="pr-t3-feature-description pr-t3-text-long" data-editable>Add short description about features.Make this description short but effective</div>
+		    <div class="panel-body"><h4 class="pr-t-edit-input">{{features_titles.indexOf(',') >= 0 ? features_titles.split(',')[1] : features_titles}}</h4></div>
+		    <div class="pr-t3-feature-description pr-t-text-long">{{features_details.indexOf(',') >= 0 ? features_details.split(',')[1] : features_details}}</div>
 		 	<!-- <img src="./image-portfolio/icon1.png" alt="" height="40%" width="40%"> -->
 			</div>
 		</div>
 
-		<div class="col-md-4 product-list">
+		<div [class.col-md-4]="themeOne" [class.col-md-6]="themeTwo" [class.col-md-offset-3]="themeTwo" class="product-list">
 		  <div class="panel product-image">
-		  	<div class="panel-body"><h4 class="pr-t3-edit-input" data-editable>Feature 3 - Title</h4></div>
-		  	<div class="pr-t3-feature-description pr-t3-text-long" data-editable>Add short description about features.Make this description short but effective</div>
+		  	<div class="panel-body"><h4 class="pr-t-edit-input">{{features_titles.indexOf(',') >= 0 ? features_titles.split(',')[2] : features_titles}}</h4></div>
+		  	<div class="pr-t3-feature-description pr-t-text-long">{{features_details.indexOf(',') >= 0 ? features_details.split(',')[2] : features_details}}</div>
 			<!-- <img src="./image-portfolio/icon2.png" alt="" height="25%" width="25%"> -->
 		  </div>
 		</div>

@@ -1,16 +1,31 @@
-<div class="pr-notifications-panel">
-	<div class="pr-noti-header"><h4>Recent Notifications <span class="pr-noti-icon pull-right"><i class="fa fa-bell"></i></span></h4></div>
-	<div class="pr-noti-body">
-		<ul class="pr-dashboard-notifications-list">
-		<li>
-			<span>frewtw</span><span class="pr-noti-icon pull-right"><i class="fa fa-bell"></i></span>
-		</li>
-		<li>
-			<span>frewtw</span><span class="pr-noti-icon pull-right"><i class="fa fa-bell"></i></span>
-		</li>
-		<li>
-			<span>frewtw</span><span class="pr-noti-icon pull-right"><i class="fa fa-bell"></i></span>
-		</li>
-	</ul>
+<!-- <div class="container"> -->
+<!-- <div class="row pr-notifications-row"> -->
+	<div class="col-md-12 ">
+	<div class="panel pr-notifications-panel pr-panel-border">
+		<div class="pr-noti-header"><h4>Notifications <span class="pr-noti-icon pull-right"><i class="fa fa-bell"></i></span></h4></div>
+		<div class="pr-noti-body" *ngIf = 'notifications; else noNotifications'>
+			<ul class="pr-dashboard-notifications-list">
+				<li>
+					<span>frewtw</span><span class="pr-noti-icon pull-right"><i class="fa fa-bell"></i></span>
+				</li>
+				<li>
+					<span>frewtw</span><span class="pr-noti-icon pull-right"><i class="fa fa-bell"></i></span>
+				</li>
+				<li>
+					<span>frewtw</span><span class="pr-noti-icon pull-right"><i class="fa fa-bell"></i></span>
+				</li>
+			</ul>
+		</div>
+		<ng-template #noNotifications>
+		<div class="pr-noti-body">
+			<ul class="pr-dashboard-notifications-list">
+				<li>
+					<span>No notifications</span><span class="pr-noti-icon pull-right"><i class="fa fa-bell"></i></span>
+				</li>
+			</ul>
+		</div>
+	</ng-template>
+	</div>
 </div>
-</div>
+<!-- </div> -->
+<!-- </div> -->

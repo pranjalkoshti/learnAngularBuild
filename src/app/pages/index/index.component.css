@@ -1,0 +1,110 @@
+.container-fluid{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	/*background-color: #fafafa; */
+	background-color: #ffff; 
+	z-index: 0;
+	padding: 13em;
+}
+.pr-heading h1{
+	font-weight: 300;
+}
+.pr-title-panel{
+	position: absolute; 
+	left:0; 
+	right:0; 
+	margin-left: 50%;
+	background-color: #10a9c5; 
+	padding:2em;
+	color: white;
+	margin-top: 10%;
+	border-radius: 0px;
+	border-top-left-radius: 41px;
+	text-align: right
+}
+.pr-title-panel h1{
+	font-size: 45px;
+	font-weight: 400;
+}
+.pr-subtitle-panel{
+	position: absolute; 
+	left:0; 
+	right:0; 
+	margin-left: 50%;
+	/*background-color: black; */
+	padding:1em;
+	color: black;
+	margin-top: 16%;
+	border-radius: 0px;
+	border-top-left-radius: 41px;
+	text-align: right
+}
+.pr-subtitle-panel h1{
+	font-size: 45px;
+	font-weight: 400;
+}
+.pr-how-it-works-panel{
+	position: absolute; 
+	left:0; 
+	right:0; 
+	bottom:0;
+	top:0;
+	margin-left: 20%;
+	margin-right:60%;
+	/*background-color: #406acb;*/
+	padding: 1em;
+	text-align: center;
+	/*border-top-right-radius:50px;
+	border-bottom-left-radius:50px;*/
+}
+.pr-features-one{
+	margin-top:5%;
+	margin-bottom: 20%;
+}
+.pr-features-two{
+	margin-top: 15%;
+	margin-bottom: 40%;
+}
+.pr-features-three{
+	margin-top: 25%;
+	margin-bottom: 30%;
+}
+.pr-features-four{
+	margin-top: 35%;
+	margin-bottom: 20%;
+}
+.pr-features-five{
+	margin-top: 45%;
+	margin-bottom: 10%;
+}
+h2{
+	font-weight: 300;
+	margin-bottom: 1em;
+	color: #406acb
+}
+.pr-create-btn{
+	font-size: 20px;
+	color: #406acb;
+}
+h2:after{
+	content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    /*margin: 0 auto;  This will center the border. */
+    width: 7%; /* Change this to whatever width you want. */
+    padding-top: 15px; /* This creates some space between the element and the border. */
+    border-bottom: 3px solid #00c853; /* This creates the border. Replace black with whatever color you want. */
+}
+p{
+	color: grey;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .container-fluid{
+        padding: 0;
+    }
+}
+

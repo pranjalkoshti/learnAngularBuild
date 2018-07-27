@@ -1,32 +1,61 @@
 <div class="container">
 		<div class="row pr-main-row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4">
+			<div class="col-md-2"></div>
+			<div class="col-md-4 pr-signup-div">
 				<div class="text-center">
 					<h2>Log In</h2>
 					<p>New to Pruchha? <a href="/signup" class="btn btn-sm pr-signup-btn">Sign Up</a></p>
 				</div>
-				<p class="pr-main-error alert alert-danger" *ngIf="!form.untouched && !form.valid">{{errorAlert}}</p>
-				<form class="form-horizontal text-center pr-main-login-form" [formGroup]="form" ng-submit="login(form.value)">
+				<p class="pr-main-error alert alert-danger" *ngIf="msg">{{msg}}</p>
+				<form class="form-horizontal text-center pr-main-login-form" [formGroup]="form">
 			            <!-- Email input-->
-			            <!-- <div class="form-group">
-			              <label class="col-md-3 control-label" for="email">Email</label>
-			              <div class="col-md-9">
-			                <input id="email" name="email" type="text" placeholder="Email" class="form-control pr-login-input" ng-model="email" #email>
-			              </div>
-			            </div> -->
-			            <app-input [name]="'Email'" [type]="'text'" [control]="form.controls.control" ngDefaultControl></app-input>
+			            <div class="form-group">
+			              <!-- <label class="col-md-3 control-label" for="email">Email</label>
+			              <div class="col-md-9"> -->
+			                <input id="email" name="email" type="text" placeholder="Email" class="form-control pr-login-input" formControlName="email">
+			              <!-- </div> -->
+			            </div>
+			            <div class="alert alert-danger" *ngIf="form.get('email').invalid && form.get('email').touched">
+				        	<div *ngIf="form.get('email').hasError('required')">
+				        		<p>Email is required</p>
+				        	</div>
+				        	<div *ngIf="form.get('email').hasError('pattern')">
+				        		<p>Please enter valid email</p>
+				        	</div>
+				        	<div *ngIf="form.get('email').hasError('minlength')">
+				        		<p>Title must be atleast 5 characters</p>
+				        	</div>
+				        	<div *ngIf="form.get('email').hasError('maxlength')">
+				        		<p>Title must be max 45 characters</p>
+				        	</div>
+			        	</div>
+
+
+			           <!--  <app-input [name]="'Email'" [type]="'text'" [control]="form.controls.control" ngDefaultControl></app-input> -->
 			    		<!-- <p class="pr-main-error" *ngIf="!form.controls.control['email'].untouched">{{errorAlert}}</p> -->
 
 			           <!-- password input-->
-			           <!--  <div class="form-group">
-			              <label class="col-md-3 control-label" for="password">Password</label>
-			              <div class="col-md-9">
-			                <input id="password" name="password" type="password" placeholder="Password" class="form-control pr-login-input" ng-model="password" #password>
-			              </div>
-			            </div> -->
-			            <app-input [name]="'Password'" [type]="'password'" [control]="form.controls.control" ngDefaultControl></app-input>
-			    
+			            <div class="form-group">
+			             <!--  <label class="col-md-3 control-label" for="password">Password</label>
+			              <div class="col-md-9"> -->
+			                <input id="password" name="password" type="password" placeholder="Password" class="form-control pr-login-input" formControlName="password">
+			              <!-- </div> -->
+			            </div>
+			            <div class="alert alert-danger" *ngIf="form.get('password').invalid && form.get('password').touched">
+				        	<div *ngIf="form.get('password').hasError('required')">
+				        		<p>Password is required</p>
+				        	</div>
+				        	<div *ngIf="form.get('password').hasError('minlength')">
+				        		<p>Password must be atleast 5 characters</p>
+				        	</div>
+				        	<div *ngIf="form.get('password').hasError('maxlength')">
+				        		<p>Password must be max 45 characters</p>
+				        	</div>
+			        	</div>
+
+
+			           <!--  <app-input [name]="'Password'" [type]="'password'" [control]="form.controls.control" ngDefaultControl></app-input>
+			     -->
 			            <!-- Form actions -->
 			             <div class="form-group">
 			              <div class="col-md-12">
@@ -37,7 +66,12 @@
 			          <!-- {{form.value | json}} -->
 			          
 			</div>
-			<div class="col-md-4"></div>
+			<div class="col-md-4 pr-social-signup-div">
+				<div class="text-center">
+					<button class="btn btn-md pr-signin-google-btn" id="google" (click)="signupWithGoogle()"><i class="fa fa-google"></i> Continue with Google</button>
+				</div>
+			</div>
+			<div class="col-md-2"></div>
 		</div>
 	</div>
 

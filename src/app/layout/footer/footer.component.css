@@ -1,9 +1,14 @@
+footer{
+	position: absolute;
+    width: 100%;
+    bottom: 0;
+}
 .pr-sub-footer{
-	background-color: grey;
+	/*background-color: grey;*/
 	padding: 1em;
 }
 .pr-copyright-footer{
-	background-color: #333232;
+	/*background-color: #333232;*/
 	padding: 1em;
 }
 .pr-copyright-footer p{
@@ -17,6 +22,7 @@
 }
 .pr-footer-list li{
 	padding: 0.5em;
+	display: inline-block;
 }
 .pr-footer-list li a{
 	text-decoration: none;

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -8,28 +9,113 @@ import { BehaviorSubject } from 'rxjs';
 export class SendDataService {
 
 	info:any;
-  constructor(private http:HttpClient) { }
+  addiInfo:any;
+  constructor(private http:HttpClient, private router: Router) { }
 
 
-   sendBusinessInfo(title:string,description:string,type:string,url:string): void{alert(title)
+   sendBusinessInfo( title:string, subtitle:string, about:string, logo:File, url:string, city:string, address:string, social_links:string): void {
+     // title:string, subtitle:string, about:string, logo, url:string, city:string, address:string, social_links:string
 
   	this.info = {
       title:title,
-      description:description,
-      type:type,
-      url:url
+      subtitle:subtitle,
+      about:about,
+      logo:logo,
+      url:url,
+      city:city,
+      address:address,
+      social_links:social_links
     }
-
-  	//htttp post request to server
-  	this.http.post('http://localhost:8080/api/send_business_info/', this.info
+// console.log(logo)
+    var token = localStorage.getItem("token");
+// console.log(fd)
+  	this.http.post('http://localhost:8080/api/send_business_info/', 
+      logo,
+      { headers:  new HttpHeaders().set('Content-Type','none').set('Authorization', 'JWT '+token) }
   		).subscribe(
-  		(data:any)=>{console.log(data)
-        // if(data.admin == 'success'){
-        //   localStorage.setItem('token', data.password);
-        //   this.isLoggedIn = true;
-        // }
+  		(data:any)=>{//console.log(data)
+         if(data.response.response == 'successfully updated'){
+             this.router.navigate(['/'+data.id+'/dashboard']);
+         }
   		});
   }
 
 
+
+  sendAdditionalInfo(business_id, features_t, features_d, colorTheme){
+    this.addiInfo = {
+      business_id:business_id,
+      features_t:features_t,
+      features_d:features_d,
+      colorTheme:colorTheme
+    }
+    // console.log(this.addiInfo);
+
+    var token = localStorage.getItem("token");
+
+    return this.http.post('http://localhost:8080/api/send-additional-info/', this.addiInfo,
+      { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) }
+      );
+  }
+
+  sendGalleryImages(){
+    this.addiInfo = {
+   
+    }
+
+    var token = localStorage.getItem("token");
+
+    return this.http.post('http://localhost:8080/api/upload-gallery-images/', this.addiInfo,
+      { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) }
+      );
+  }
+
+  publishBusinessPage(uid,business_id,business_title, business_subtitle, colorTheme){
+
+    let info = {
+      colorTheme : colorTheme
+    }
+    var token = localStorage.getItem("token");
+
+    this.http.post('http://localhost:8080/api/publish_business_page/', 
+      info,
+      { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) }
+      ).subscribe(
+      (data:any)=>{
+        //console.log(data)
+         if(data.response.response == 'successfully published'){
+           let url = '/pages/2/fsgfs';
+           console.log(url);
+             this.router.navigate(['/pages/'+uid+'/'+business_title+'/'])
+         }
+      });
+  }
+
+  updatePageView(uid) {
+    this.info = {
+      uid:uid
+    }
+    this.http.post('http://localhost:8080/api/update_page_views/', 
+      this.info,
+      ).subscribe(
+      (data:any)=>{
+        //console.log(data)
+         // if(data.response == 'successfully updated'){
+             // var url = this.router.url;console.log("'"+url+"'")
+             // this.router.navigate(["/2/templates/1"])
+         // }
+      });
+  }
+
+  clientContactSubmit(uid,contact_name,contact_email,contact_details) {
+    this.info = {
+      uid:uid,
+      contact_name:contact_name,
+      contact_email:contact_email,
+      contact_details:contact_details
+    }
+    return this.http.post('http://localhost:8080/api/client_contact_submit/', 
+      this.info,
+      );
+  }
 }

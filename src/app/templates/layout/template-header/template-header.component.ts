@@ -8,8 +8,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TemplateHeaderComponent implements OnInit {
 
 @Input() theme:string;
-@Input() title:string = "ADD TITLE";
+@Input() title:string;
+@Input() subtitle:string;
 @Input() logoPath:string;
+@Input() templateId:string;
 
   constructor() { }
 
@@ -37,7 +39,6 @@ export class TemplateHeaderComponent implements OnInit {
   	if(!this.theme){
   		return 'black-cr-heading-color';
   	}
-
   	if(this.theme == 'red'){
   		return 'red-cr-heading-color'
   	}else if(this.theme == 'green'){

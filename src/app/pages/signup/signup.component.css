@@ -1,9 +1,39 @@
+.alert p{
+	margin:0;
+}
+.alert{
+	padding: 7px;
+}
 .pr-main-row{
 	padding-top: 10%;
 }
 
 .pr-main-error{
-	color: red;
+	/*color: red;*/
+}
+
+.pr-login-btn{
+    background-color: transparent;
+    border: 1px solid #406acb;
+    color: #406acb;
+}
+
+.pr-signin-google-btn{
+	/*background-color: #dd2323;*/
+	background-color: transparent;
+	border:1px solid #406acb;
+	color: #406acb;
+}
+
+.pr-signin-google-btn .fa-google{
+	padding-right: 1em;
+	/*border-right: 1px solid #e7e7e7;*/
+}
+
+.pr-signin-google-btn:hover{
+	/*background-color: #dd2323;*/
+	border:1px solid #dd2323;
+	color: #dd2323;
 }
 
 .pr-register-btn{
@@ -13,6 +43,14 @@
 	color: #eee;
 }
 
+.pr-signup-div{
+	padding-right: 2em;
+	border-right: 1px solid #e7e7e7;
+}
+
+.pr-social-signup-div{
+	padding-top: 10%;
+}
 
 .form-group .pr-signup-input{
 	border:none;
@@ -20,4 +58,8 @@
 	outline: none;
 	border-bottom: 1px solid #e7e7e7;
 	border-radius: 0px;
+}
+
+.pr-sub-title{
+	color: #7b7272;
 }

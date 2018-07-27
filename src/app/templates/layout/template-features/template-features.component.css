@@ -1,0 +1,13 @@
+.pr-t-edit-input{
+	padding: 0.5em;
+}
+h4.pr-t-edit-input:hover{
+	background-color: #f2f1f1;
+}
+
+.pr-t-bg-color{
+	background-color: red;
+}
+.panel{
+	box-shadow: none;
+}

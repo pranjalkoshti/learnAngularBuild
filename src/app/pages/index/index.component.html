@@ -1,0 +1,65 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="pr-heading text-center">
+		<!-- <div class="panel pr-title-panel"> -->
+			<h1>Build Business web page</h1>
+		<!-- </div> -->
+		<!-- <div class="panel pr-subtitle-panel"> -->
+			<h1>And Publish Free on one click</h1>
+		<!-- </div> -->
+		</div>
+		<!-- 	<div class="panel pr-how-it-works-panel pr-features-one" [@flyInOut]="state">
+				<button class="btn pr-create-btn">create now</button>
+				<h2>Enlist your business free</h2>
+			</div>	 -->
+			<!-- <div class="panel pr-how-it-works-panel pr-features-two">
+				<h2>Create mobile friendly web page in minutes</h2>
+			</div>
+			<div class="panel pr-how-it-works-panel pr-features-three">
+				<h2>Get statistical information of your visitors</h2>
+			</div>
+			<div class="panel pr-how-it-works-panel pr-features-four">
+				<h2>Get contacted by your visitors</h2>
+			</div>
+				<div class="panel pr-how-it-works-panel pr-features-five">
+				<h2>Share your page with public</h2>
+			</div> -->
+			<div class="col-md-12" style="padding: 5em;" >
+				<div *ngIf="visible == 1" [@flyInOut1]="state">
+					<h2>Enlist your business free</h2>
+					<p>Enlist your business free on pruchha and let pruchha take care of the rest</p>
+				</div>
+				<div *ngIf="visible == 1" [@flyInOut1]="state">
+					<img src="">
+				</div>
+				<div *ngIf="visible == 2" [@flyInOut1]="state">
+					<h2>Create mobile friendly web page in minutes</h2>
+					<p>Enlist your business free on pruchha and let pruchha take care of the rest</p>
+				</div>
+				<div *ngIf="visible == 3" [@flyInOut1]="state">
+					<h2>Get statistical information of your visitors</h2>
+					<p>Business owner will get visual statistical information of visitors of business web page.</p>
+				</div>
+				<div *ngIf="visible == 4" [@flyInOut1]="state">
+					<h2>Get contacted by your visitors</h2>
+					<p>Each template have contact us section where visitor can contact the business owner and give feedback.</p>
+				</div>
+			</div>
+
+		<!-- 	<div class="col-md-12" style="padding: 5em;" *ngIf="visible == 2" [@flyInOut1]="state">
+				<h2>Create mobile friendly web page in minutes</h2>
+				<p>Enlist your business free on pruchha and let pruchha take care of the rest</p>
+			</div>
+			<div class="col-md-12" style="padding: 5em;" *ngIf="visible == 3" [@flyInOut1]="state">
+				<h2>Get statistical information of your visitors</h2>
+				<p>Business owner will get visual statistical information of visitors of business web page.</p>
+			</div>
+			<div class="col-md-12" style="padding: 5em;" *ngIf="visible == 4" [@flyInOut1]="state">
+				<h2>Get contacted by your visitors</h2>
+				<p>Each template have contact us section where visitor can contact the business owner and give feedback.</p>
+			</div> -->
+			<!-- <div class="text-right"><a class="btn btn-default" (click)="toggle()">next</a></div> -->
+
+	</div>
+</div>
+<app-footer></app-footer>

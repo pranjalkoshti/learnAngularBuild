@@ -12,6 +12,7 @@ export class InputComponent implements OnInit {
 	@Input() name: string;
 	@Input() type: string;
 	@Input() control: AbstractControl;
+	@Input() value;
 
   constructor() { }
 
