@@ -75,7 +75,7 @@ emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   }
 
   signupWithGoogle() {
-    window.location.href="http://localhost:8080/auth/google/";
+    window.location.href="auth/google/";
     // this.authService.signupWithGoogle();
     // this.router.navigate(['/auth/google/']);
   }

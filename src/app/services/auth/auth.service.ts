@@ -26,7 +26,7 @@ export class AuthService {
     }
 
 
-  	return this.http.post('http://localhost:8080/api/login/', this.user);
+  	return this.http.post('login/', this.user);
   }
 
   logout(): void {
@@ -47,7 +47,7 @@ export class AuthService {
           password:password
         }
 
-      return this.http.post('http://localhost:8080/api/register/', this.user);
+      return this.http.post('register/', this.user);
   }
 
   signupWithGoogle() {

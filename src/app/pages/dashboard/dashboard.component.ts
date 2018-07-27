@@ -64,7 +64,7 @@ export class DashboardComponent implements OnInit {
     // if(this.getAdminToken()){
     //   var token = localStorage.getItem("token");
     //   if(token){
-    //       return this.http.get('http://localhost:8080/api/check-user-id/',{ headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) })
+    //       return this.http.get('check-user-id/',{ headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) })
     //       .subscribe(
     //       (data:any) =>{
     //         this.id = data.response;

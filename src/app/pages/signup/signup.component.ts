@@ -73,7 +73,7 @@ export class SignupComponent implements OnInit {
   }
 
   signupWithGoogle() {
-    window.location.href="http://localhost:8080/auth/google/";
+    window.location.href="auth/google/";
     // this.authService.signupWithGoogle();
     // this.router.navigate(['/auth/google/']);
   }

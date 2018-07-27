@@ -39,7 +39,7 @@ getUserAuthStatus(userId){
     var token = localStorage.getItem("token");
 
 
-  	this.http.post('http://localhost:8080/api/check-user-auth-status/', this.info, { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) }
+  	this.http.post('check-user-auth-status/', this.info, { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) }
   		).subscribe(
   		(data:any)=>{ //console.log(data.response);alert()
   		

@@ -36,7 +36,7 @@ export class ContactsComponent implements OnInit {
 
   getContactsInfo(business_id){
   	this.getDataService.getBusinessVisitorsInfo(business_id).subscribe((data:any)=>{
-  		console.log(data)
+  		//console.log(data)
   	});
   }
 

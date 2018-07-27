@@ -190,7 +190,7 @@ export class BusinessInfoFormComponent implements OnInit {
       // this.SendDataService.sendBusinessInfo(formData);
       var token = localStorage.getItem("token");
 
-      this.http.post('http://localhost:8080/api/send_business_info/', 
+      this.http.post('send_business_info/', 
       formData,
       { headers:  new HttpHeaders().set('Authorization', 'JWT '+token) }
       ).subscribe(

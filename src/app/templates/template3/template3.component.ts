@@ -356,7 +356,7 @@ export class Template3Component implements OnInit {
 			formData.append('gallery_images', this.uploaded_gallery_images);
 
 			var token = localStorage.getItem("token");
-		this.http.post('http://localhost:8080/api/upload-gallery-images/',
+		this.http.post('upload-gallery-images/',
 			formData,
 			{ headers:  new HttpHeaders().set('Authorization', 'JWT '+token) }
 			).subscribe(
