@@ -87,10 +87,10 @@ const connection = new Client({
 connection.connect();
 
 
-router.get('/',function(req, res){
-  res.send(req.user.user.fname)
-  // res.end('logged in user ' + req.user);
-});
+// router.get('/',function(req, res){
+//   res.send(req.user.user.fname)
+//   // res.end('logged in user ' + req.user);
+// });
 //-------------------- REGISTERATION ------------------------------
 
 router.post('/register', function(req, res, next) {
@@ -109,7 +109,7 @@ router.post('/register', function(req, res, next) {
         var error = req.validationErrors();
 
         if(error){
-          res.send(JSON.stringify(error));
+          // res.send(JSON.stringify(error));
         }else{
           user.registerUser(email,fname,lname, password, function(error, response){
             if(error){
@@ -147,7 +147,7 @@ router.post('/login', function(req, res, next) {
         var error = req.validationErrors();
 
         if(error){
-          res.send(JSON.stringify(error));
+          // res.send(JSON.stringify(error));
         }else{
             user.loginUser(email, password, function(error, response){
               if(error){
@@ -195,7 +195,7 @@ router.post('/send_business_info', function(req, res, next) {
   upload(req, res, function (err) {
     if (err) {
       console.log(err);
-      res.end('error')
+      // res.end('error')
     }else{
       console.log(req.body);
 
@@ -633,7 +633,7 @@ router.get('/fetch_clients_contacts', function(req, res, next) {
 });
 
 
-router.post('/update_page_views', function(req,res,next) {console.log(req.body.uid)
+router.post('/update_page_views', function(req,res,next) {
     var uid = req.body.uid;
     var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
 
