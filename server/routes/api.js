@@ -93,7 +93,7 @@ connection.connect();
 // });
 //-------------------- REGISTERATION ------------------------------
 
-router.post('/register', function(req, res, next) {
+router.post('/register', function(req, res, next) {console.log(req.body)
 
         var fname = req.body.fname;
         var lname = req.body.lname;
