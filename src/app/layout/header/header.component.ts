@@ -38,6 +38,9 @@ isCollapsed= true;
           }
        }
     }
+    ulClick(){
+      this.isCollapsed=true;
+    }
 
   }
 

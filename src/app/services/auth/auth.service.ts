@@ -32,7 +32,8 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token');
     this.isLoggedIn = false;
-    this.router.navigate(['/api/login']);
+    // this.router.navigate(['/api/login']);
+    window.location.reload();
   }
 
   getAdminToken() {

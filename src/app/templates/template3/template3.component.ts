@@ -66,7 +66,7 @@ export class Template3Component implements OnInit {
   businessTitle:string;
 
   isAutherized:boolean = this.getAdminToken();
-  // isAutherized:boolean;
+  businessPresent:boolean;
 
   uploaded_gallery_images;
 
@@ -150,30 +150,32 @@ export class Template3Component implements OnInit {
         this.businessTitle = params['businessTitle'];
         this.isAutherized = false;
       }
-
-      this.authBusinessService.getBusinessAuthStatus(this.userId,this.businessTitle)
-	      .subscribe(
-	      (data:any)=>{ 
-	        //console.log(data)
-	        if(data.error == 'wrong url'){
-	            this.router.navigate(['/']);
-	        }
-	        if(data.status == 'not published'){
-	            this.router.navigate(['/']);
-	        }else if(data.success == 'user present' && data.status == 'published'){
+  if(this.userId){
+    this.authBusinessService.getBusinessAuthStatus(this.userId,this.businessTitle)
+        .subscribe(
+        (data:any)=>{ 
+          //console.log(data)
+          if(data.error == 'wrong url'){
+              this.router.navigate(['/']);
+          }
+          if(data.status == 'not published'){
+              this.router.navigate(['/']);
+          }else if(data.success == 'user present' && data.status == 'published'){
               if(this.isAutherized == false){
                 this.sendDataService.updatePageView(this.userId);
               };
-	        }
+          }
       }
       );
+    }
+    
 
     });
 
    
-
+if(this.userId){
     this.getDataService.getBusinessInfo(this.userId).subscribe((res:any)=>{//console.log(res)
-      if(res.response != 'business not present'){
+      if(res.response != 'business not present'){this.businessPresent = true;
         if(res.data['uid']){
           this.uid = res.data['uid'];
         }
@@ -221,6 +223,8 @@ export class Template3Component implements OnInit {
         if(res.data['pr_business_published_status'] == 1){
             this.pr_business_published_status = true;
         }
+    }else if(res.response == 'business not present'){
+      this.businessPresent = false;
     }
 
     this.getDataService.getAdditionalBusinessInfo(this.pr_business_id).subscribe((res:any)=>{//console.log(res)
@@ -252,6 +256,8 @@ export class Template3Component implements OnInit {
     });
   }
 
+}
+
 
   getAdminToken() {
     return !!localStorage.getItem("token");
@@ -262,7 +268,7 @@ export class Template3Component implements OnInit {
   	onCTSelect(e) {
   		if(e.classList.contains('pr-ct-select')){
   			this.colorTheme = e.getAttribute('id');
-  			console.log(this.colorTheme);
+  			//console.log(this.colorTheme);
   		}
   	}
 
@@ -280,7 +286,7 @@ export class Template3Component implements OnInit {
       this.features_t = this.form.value['feature_1_title'] + ',' + this.form.value['feature_2_title'] +',' + this.form.value['feature_3_title'];
       this.features_d = this.form.value['feature_1_details'] +','+ this.form.value['feature_2_details'] +','+ this.form.value['feature_3_details'];
     }
-    console.log(this.features_d, this.features_t, this.colorTheme);
+   // console.log(this.features_d, this.features_t, this.colorTheme);
     this.sendDataService.sendAdditionalInfo(this.pr_business_id, this.features_t, this.features_d, this.colorTheme).subscribe(
       (data:any)=>{
         //console.log(data)
@@ -293,7 +299,9 @@ export class Template3Component implements OnInit {
   }
 
   onPublish(){
-    this.sendDataService.publishBusinessPage(this.uid,this.pr_business_id,this.pr_business_title,this.pr_business_title,this.colorTheme);
+    if(this.uid != undefined){
+      this.sendDataService.publishBusinessPage(this.uid,this.pr_business_id,this.pr_business_title,this.pr_business_title,this.colorTheme);
+    }
   }
 
   setBgColor() {

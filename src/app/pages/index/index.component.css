@@ -100,11 +100,16 @@ h2:after{
 p{
 	color: grey;
 }
-
+.pr-features{
+	padding: 5em;
+}
 
 @media only screen and (max-width: 600px) {
     .container-fluid{
-        padding: 0;
+        padding: 7em 2em;
     }
+    .pr-features{
+		padding: 2em;
+	}
 }
 

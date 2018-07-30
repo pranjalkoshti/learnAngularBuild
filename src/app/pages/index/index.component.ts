@@ -35,7 +35,7 @@ export class IndexComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-     setInterval(() => { this.toggle(); }, 3000);
+     setInterval(() => { this.toggle(); }, 5000);
   }
 
   toggle(){

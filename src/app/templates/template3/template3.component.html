@@ -1,9 +1,14 @@
 	<div class="text-center" style="padding:0.5em;" *ngIf="isAutherized">
+		<div *ngIf="businessPresent; else businessnotpublished">
 			<p style="font-style:italic; margin:0px; color:grey; margin-bottom:1em;">This page is preview of final web page. You can edit information provided here which will appear on final page. Once you are done with editing, just click on submit.</p>
 	  		<div class="text-center">
 	  			<button class="btn btn-sm btn-primary pr-t-edit-final" (click)="onPublish()" *ngIf="pr_business_published_status">Submit</button>
 	  			<button class="btn btn-sm btn-primary pr-t-publish-final" (click)="onPublish()" *ngIf="!pr_business_published_status">Publish</button>
 	  		</div>
+	  	</div>
+	  	<ng-template #businessnotpublished>
+			<p style="font-style:italic; margin:0px; color:grey; margin-bottom:1em;">Your business is not yet registered with pruchha.</p>
+	  	</ng-template>
 	  	</div>
 <!-- START - header -->
 <nav class="navbar navbar-inverse" [ngClass]="setBgColor()">

@@ -56,7 +56,7 @@ export class SignupComponent implements OnInit {
       this.password = this.form.value['password'];
       this.data = this.authService.signup(this.fname, this.lname,this.email,this.password).subscribe(
           (data:any)=>{
-           //console.log(data);
+            //console.log(data);
             //  localStorage.setItem('token', data.token);
             // this.router.navigate(['/']);
 
