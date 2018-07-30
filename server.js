@@ -189,8 +189,8 @@ app.get('/send', function(req, res, next) {
 app.use('/api',api);
 
 app.get('*', function(req, res){
-	// res.sendFile(path.join(__dirname,'dist/index.html'));
-  res.send('hi');
+	res.sendFile(path.join(__dirname,'dist/index.html'));
+
 });
 
 const port = process.env.PORT || '8080';
