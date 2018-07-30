@@ -1,3 +1,4 @@
+
 import { Component, OnInit, Input } from '@angular/core';
 import { GetDataService } from '../../../services/get-data.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

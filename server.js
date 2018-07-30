@@ -157,9 +157,6 @@ app.get('/auth/google/callback',
     res.redirect("/social_login_success/"+token);
   });
 
- app.get('/', function(req, res){
-    res.render('index', { user: req.user });
-  });
 
 app.get('/send', function(req, res, next) {
   var transporter = nodemailer.createTransport({
