@@ -28,30 +28,30 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var app = express();
 
 //api file interacting with db
-const api = require('./server/routes/api');
+// const api = require('./server/routes/api');
 
-app.use(cookieSession({
-  keys:[config.cookie_key]
-}));
+// app.use(cookieSession({
+//   keys:[config.cookie_key]
+// }));
 
-// app.use(logger('dev')); //study?
-app.use(expressValidator());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'dist')));
+// // app.use(logger('dev')); //study?
+// app.use(expressValidator());
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
+// app.use(cookieParser());
+// app.use(express.static(path.join(__dirname, 'dist')));
 
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
 
-var options = {   // DATABASE CONNECTIVITY CREDENTIALS
-  host     : config.mysqlHost,
-  user     : config.mysqlUser,
-  password : config.mysqlPassword,
-  database : config.mysqlDb
-};
+// var options = {   // DATABASE CONNECTIVITY CREDENTIALS
+//   host     : config.mysqlHost,
+//   user     : config.mysqlUser,
+//   password : config.mysqlPassword,
+//   database : config.mysqlDb
+// };
 
-var sessionStore = new MySQLStore(options);
+// var sessionStore = new MySQLStore(options);
 
 // app.use(session({
 //   secret: 'keyboard',
