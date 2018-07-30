@@ -16,7 +16,7 @@ export class GetDataService {
   getUsers() {
 
     var token = localStorage.getItem("token");
-  	this.http.get('user/',{ headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) }).subscribe(
+  	this.http.get('/api/user/',{ headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) }).subscribe(
   		(res:any[])=>{
         	this.users = res;
          // console.log(res)
@@ -28,7 +28,7 @@ export class GetDataService {
   getuidFromToken() {
 
     var token = localStorage.getItem("token");
-    return this.http.post('get_uid_from_token/',{ headers:  new HttpHeaders().set('Authorization', 'JWT '+token) });
+    return this.http.post('/api/get_uid_from_token/',{ headers:  new HttpHeaders().set('Authorization', 'JWT '+token) });
   }
 
   getBusinessInfo(uid):Observable<any> { 
@@ -38,12 +38,12 @@ export class GetDataService {
      this.data = {
        uid:null
      }
-     return this.http.post('fetch_business_info/',this.data, { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) });
+     return this.http.post('/api/fetch_business_info/',this.data, { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) });
    }else{
      this.data = {
        uid:uid
      }
-     return this.http.post('fetch_business_info/', this.data);
+     return this.http.post('/api/fetch_business_info/', this.data);
    }
     
   }
@@ -55,7 +55,7 @@ export class GetDataService {
      business_id:business_id
    };
    // if(token){
-     return this.http.post<any>('fetch_additional_business_info/', info, { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) });
+     return this.http.post<any>('/api/fetch_additional_business_info/', info, { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) });
    // }else{
    //   this.data = {
    //     uid:uid
@@ -67,12 +67,12 @@ export class GetDataService {
 
   getBusinessStats():Observable<any> { 
     var token = localStorage.getItem("token");
-    return this.http.get<any>('http://localhost:8080/api/fetch_business_stats/', { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) });
+    return this.http.get<any>('/api/fetch_business_stats/', { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) });
   }
 
   getNotifications():Observable<any> {
     var token = localStorage.getItem("token");
-    return this.http.get('http://localhost:8080/api/fetch_notifications/',{ headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) });
+    return this.http.get('/api/fetch_notifications/',{ headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) });
   }
 
   getBusinessVisitorsInfo(business_id){
@@ -80,7 +80,7 @@ export class GetDataService {
     let info = {
       business_id: business_id
     }
-    return this.http.post('http://localhost:8080/api/fetch_visitor_info/', info, { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) });
+    return this.http.post('/api/fetch_visitor_info/', info, { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) });
   }
 
    getBusinessContacts(business_id){
@@ -88,7 +88,7 @@ export class GetDataService {
     let info = {
       business_id: business_id
     }
-    return this.http.post('http://localhost:8080/api/fetch_clients_contacts/', info, { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) });
+    return this.http.post('/api/fetch_clients_contacts/', info, { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) });
   }
   
 

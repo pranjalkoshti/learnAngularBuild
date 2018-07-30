@@ -1267,7 +1267,7 @@ var BusinessInfoFormComponent = /** @class */ (function () {
             //this.SendDataService.sendBusinessInfo(this.title,this.subtitle,this.about,this.logo,this.url,this.city,this.address,this.social_links);
             // this.SendDataService.sendBusinessInfo(formData);
             var token = localStorage.getItem("token");
-            this.http.post('send_business_info/', formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]().set('Authorization', 'JWT ' + token) }).subscribe(function (data) {
+            this.http.post('/api/send_business_info/', formData, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]().set('Authorization', 'JWT ' + token) }).subscribe(function (data) {
                 if (data.response.response == 'successfully updated') {
                     _this.router.navigate(['/' + data.id + '/dashboard']);
                 }
@@ -2743,7 +2743,7 @@ var SignupComponent = /** @class */ (function () {
             this.email = this.form.value['email'];
             this.password = this.form.value['password'];
             this.data = this.authService.signup(this.fname, this.lname, this.email, this.password).subscribe(function (data) {
-                // console.log(data);
+                console.log(data);
                 //  localStorage.setItem('token', data.token);
                 // this.router.navigate(['/']);
                 if (data.error) {
@@ -2813,7 +2813,7 @@ var AuthBusinessService = /** @class */ (function () {
             userId: userId,
             businessTitle: businessTitle
         };
-        return this.http.post('check-business-published-status/', this.info);
+        return this.http.post('/api/check-business-published-status/', this.info);
     };
     AuthBusinessService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -2874,7 +2874,7 @@ var AuthUsersService = /** @class */ (function () {
             userId: userId,
         };
         var token = localStorage.getItem("token");
-        this.http.post('check-user-auth-status/', this.info, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) }).subscribe(function (data) {
+        this.http.post('/api/check-user-auth-status/', this.info, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) }).subscribe(function (data) {
             if (data.response == 'user not authenticated') {
                 _this.router.navigate(['/login']);
             }
@@ -2983,12 +2983,12 @@ var AuthService = /** @class */ (function () {
             email: email,
             password: password
         };
-        return this.http.post('login/', this.user);
+        return this.http.post('/api/login/', this.user);
     };
     AuthService.prototype.logout = function () {
         localStorage.removeItem('token');
         this.isLoggedIn = false;
-        this.router.navigate(['/login']);
+        this.router.navigate(['/api/login']);
     };
     AuthService.prototype.getAdminToken = function () {
         return !!localStorage.getItem("token");
@@ -3000,7 +3000,7 @@ var AuthService = /** @class */ (function () {
             email: email,
             password: password
         };
-        return this.http.post('register/', this.user);
+        return this.http.post('/api/register/', this.user);
     };
     AuthService.prototype.signupWithGoogle = function () {
         return this.http.get('http://localhost:8080/auth/google/', { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Access-Control-Allow-Origin', '*') });
@@ -3099,7 +3099,7 @@ var GetDataService = /** @class */ (function () {
     GetDataService.prototype.getUsers = function () {
         var _this = this;
         var token = localStorage.getItem("token");
-        this.http.get('user/', { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) }).subscribe(function (res) {
+        this.http.get('/api/user/', { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) }).subscribe(function (res) {
             _this.users = res;
             // console.log(res)
         });
@@ -3107,7 +3107,7 @@ var GetDataService = /** @class */ (function () {
     };
     GetDataService.prototype.getuidFromToken = function () {
         var token = localStorage.getItem("token");
-        return this.http.post('get_uid_from_token/', { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Authorization', 'JWT ' + token) });
+        return this.http.post('/api/get_uid_from_token/', { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Authorization', 'JWT ' + token) });
     };
     GetDataService.prototype.getBusinessInfo = function (uid) {
         var token = localStorage.getItem("token");
@@ -3115,13 +3115,13 @@ var GetDataService = /** @class */ (function () {
             this.data = {
                 uid: null
             };
-            return this.http.post('fetch_business_info/', this.data, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
+            return this.http.post('/api/fetch_business_info/', this.data, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
         }
         else {
             this.data = {
                 uid: uid
             };
-            return this.http.post('fetch_business_info/', this.data);
+            return this.http.post('/api/fetch_business_info/', this.data);
         }
     };
     GetDataService.prototype.getAdditionalBusinessInfo = function (business_id) {
@@ -3130,7 +3130,7 @@ var GetDataService = /** @class */ (function () {
             business_id: business_id
         };
         // if(token){
-        return this.http.post('fetch_additional_business_info/', info, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
+        return this.http.post('/api/fetch_additional_business_info/', info, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
         // }else{
         //   this.data = {
         //     uid:uid
@@ -3140,25 +3140,25 @@ var GetDataService = /** @class */ (function () {
     };
     GetDataService.prototype.getBusinessStats = function () {
         var token = localStorage.getItem("token");
-        return this.http.get('http://localhost:8080/api/fetch_business_stats/', { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
+        return this.http.get('/api/fetch_business_stats/', { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
     };
     GetDataService.prototype.getNotifications = function () {
         var token = localStorage.getItem("token");
-        return this.http.get('http://localhost:8080/api/fetch_notifications/', { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
+        return this.http.get('/api/fetch_notifications/', { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
     };
     GetDataService.prototype.getBusinessVisitorsInfo = function (business_id) {
         var token = localStorage.getItem("token");
         var info = {
             business_id: business_id
         };
-        return this.http.post('http://localhost:8080/api/fetch_visitor_info/', info, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
+        return this.http.post('/api/fetch_visitor_info/', info, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
     };
     GetDataService.prototype.getBusinessContacts = function (business_id) {
         var token = localStorage.getItem("token");
         var info = {
             business_id: business_id
         };
-        return this.http.post('http://localhost:8080/api/fetch_clients_contacts/', info, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
+        return this.http.post('/api/fetch_clients_contacts/', info, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
     };
     GetDataService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -3219,7 +3219,7 @@ var SendDataService = /** @class */ (function () {
         // console.log(logo)
         var token = localStorage.getItem("token");
         // console.log(fd)
-        this.http.post('send_business_info/', logo, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'none').set('Authorization', 'JWT ' + token) }).subscribe(function (data) {
+        this.http.post('/api/send_business_info/', logo, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'none').set('Authorization', 'JWT ' + token) }).subscribe(function (data) {
             if (data.response.response == 'successfully updated') {
                 _this.router.navigate(['/' + data.id + '/dashboard']);
             }
@@ -3234,12 +3234,12 @@ var SendDataService = /** @class */ (function () {
         };
         // console.log(this.addiInfo);
         var token = localStorage.getItem("token");
-        return this.http.post('send-additional-info/', this.addiInfo, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
+        return this.http.post('/api/send-additional-info/', this.addiInfo, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
     };
     SendDataService.prototype.sendGalleryImages = function () {
         this.addiInfo = {};
         var token = localStorage.getItem("token");
-        return this.http.post('upload-gallery-images/', this.addiInfo, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
+        return this.http.post('/api/upload-gallery-images/', this.addiInfo, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) });
     };
     SendDataService.prototype.publishBusinessPage = function (uid, business_id, business_title, business_subtitle, colorTheme) {
         var _this = this;
@@ -3247,7 +3247,7 @@ var SendDataService = /** @class */ (function () {
             colorTheme: colorTheme
         };
         var token = localStorage.getItem("token");
-        this.http.post('publish_business_page/', info, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) }).subscribe(function (data) {
+        this.http.post('/api/publish_business_page/', info, { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('Content-Type', 'application/json').set('Authorization', 'JWT ' + token) }).subscribe(function (data) {
             //console.log(data)
             if (data.response.response == 'successfully published') {
                 var url = '/pages/2/fsgfs';
@@ -3260,7 +3260,7 @@ var SendDataService = /** @class */ (function () {
         this.info = {
             uid: uid
         };
-        this.http.post('update_page_views/', this.info).subscribe(function (data) {
+        this.http.post('/api/update_page_views/', this.info).subscribe(function (data) {
             //console.log(data)
             // if(data.response == 'successfully updated'){
             // var url = this.router.url;console.log("'"+url+"'")
@@ -3275,7 +3275,7 @@ var SendDataService = /** @class */ (function () {
             contact_email: contact_email,
             contact_details: contact_details
         };
-        return this.http.post('client_contact_submit/', this.info);
+        return this.http.post('/api/client_contact_submit/', this.info);
     };
     SendDataService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

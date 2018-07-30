@@ -30,7 +30,7 @@ export class AuthBusinessService {
       businessTitle:businessTitle
     }
 
-  	return this.http.post('check-business-published-status/', this.info
+  	return this.http.post('/api/check-business-published-status/', this.info
   		);
 
   }

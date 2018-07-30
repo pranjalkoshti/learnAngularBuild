@@ -37,23 +37,27 @@ module.exports = {
 
 	   bcrypt.hash(password, saltRounds, function(err, hash) {
 
-          query = "INSERT INTO pr_business.pr_business_user_account (fname, lname, email, password) VALUES ( '"+fname+"','"+lname+"','"+email+"','"+hash+"')";
+          // query = "INSERT INTO pr_business.pr_business_user_account (fname, lname, email, password) VALUES ( '"+fname+"','"+lname+"','"+email+"','"+hash+"')";
+          const text = 'INSERT INTO pr_business.pr_business_user_account (fname, lname, email, password) VALUES ( $1, $2, $3, $4 )'
+          const values = [fname, lname, email, hash];
 
-              connection.query(query,function(err,res){
+              connection.query(text, values ,function(err,res){
                   if(err){
              
-                    if(err.code == 'ER_DUP_ENTRY'){
+                    if(err.code == '23505'){
                       var error = {
                         error : 'Email is already registered'
                       }
 
                       callback(error,null);
-                    }else{
-                       callback(error,null);
                     }
+                    console.log(err)
                   }else{
 
-                      connection.query('SELECT uid FROM pr_business.pr_business_user_account WHERE email = "'+email+'"', function(err,response){
+                    const text = 'SELECT uid FROM pr_business.pr_business_user_account WHERE email = $1';
+                    const values = [email];
+
+                      connection.query(text, values, function(err,response){
                         console.log(err);
                         if(err){
                           callback(err,null);
@@ -83,8 +87,9 @@ loginUser(email, password, callback){
                 }else{
                     if(res.rows.length == 1){
 
-                      bcrypt.compare(password, res.rows[0].password, function(err, response) {console.log(response)
-                        if(err){
+                      bcrypt.compare(password, res.rows[0].password, function(err, response) {
+                        console.log(res.rows)
+                        if(err){console.log(err)
                           var err = 'Password is incorrect';
                           callback(err,null);
                         }else{
@@ -98,15 +103,12 @@ loginUser(email, password, callback){
                             };
                             callback(null,response);
                           }
-                          
-                        }
-                            
+                        }   
                       });
             
                     }else if(res.rows.length == 0){
-
-                            var err = 'Email not present';
-                            callback(err,null);  
+                        var err = 'Email not present';
+                        callback(err,null);  
                     }
                 }
                  

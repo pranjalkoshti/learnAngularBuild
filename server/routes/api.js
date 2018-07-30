@@ -91,9 +91,10 @@ connection.connect();
 //   res.send(req.user.user.fname)
 //   // res.end('logged in user ' + req.user);
 // });
+
 //-------------------- REGISTERATION ------------------------------
 
-router.post('/register', function(req, res, next) {console.log(req.body)
+router.post('/register', function(req, res, next) { 
 
         var fname = req.body.fname;
         var lname = req.body.lname;

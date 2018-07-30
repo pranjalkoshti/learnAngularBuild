@@ -29,7 +29,7 @@ export class SendDataService {
 // console.log(logo)
     var token = localStorage.getItem("token");
 // console.log(fd)
-  	this.http.post('send_business_info/', 
+  	this.http.post('/api/send_business_info/', 
       logo,
       { headers:  new HttpHeaders().set('Content-Type','none').set('Authorization', 'JWT '+token) }
   		).subscribe(
@@ -53,7 +53,7 @@ export class SendDataService {
 
     var token = localStorage.getItem("token");
 
-    return this.http.post('send-additional-info/', this.addiInfo,
+    return this.http.post('/api/send-additional-info/', this.addiInfo,
       { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) }
       );
   }
@@ -65,7 +65,7 @@ export class SendDataService {
 
     var token = localStorage.getItem("token");
 
-    return this.http.post('upload-gallery-images/', this.addiInfo,
+    return this.http.post('/api/upload-gallery-images/', this.addiInfo,
       { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) }
       );
   }
@@ -77,7 +77,7 @@ export class SendDataService {
     }
     var token = localStorage.getItem("token");
 
-    this.http.post('publish_business_page/', 
+    this.http.post('/api/publish_business_page/', 
       info,
       { headers:  new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'JWT '+token) }
       ).subscribe(
@@ -95,7 +95,7 @@ export class SendDataService {
     this.info = {
       uid:uid
     }
-    this.http.post('update_page_views/', 
+    this.http.post('/api/update_page_views/', 
       this.info,
       ).subscribe(
       (data:any)=>{
@@ -114,7 +114,7 @@ export class SendDataService {
       contact_email:contact_email,
       contact_details:contact_details
     }
-    return this.http.post('client_contact_submit/', 
+    return this.http.post('/api/client_contact_submit/', 
       this.info,
       );
   }

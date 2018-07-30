@@ -26,13 +26,13 @@ export class AuthService {
     }
 
 
-  	return this.http.post('login/', this.user);
+  	return this.http.post('/api/login/', this.user);
   }
 
   logout(): void {
     localStorage.removeItem('token');
     this.isLoggedIn = false;
-    this.router.navigate(['/login']);
+    this.router.navigate(['/api/login']);
   }
 
   getAdminToken() {
@@ -47,7 +47,7 @@ export class AuthService {
           password:password
         }
 
-      return this.http.post('register/', this.user);
+      return this.http.post('/api/register/', this.user);
   }
 
   signupWithGoogle() {
