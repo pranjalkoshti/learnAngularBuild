@@ -36,7 +36,7 @@ app.use(cookieSession({
   keys:[config.cookie_key]
 }));
 
-//app.use(logger('dev')); //study
+// app.use(logger('dev')); //study?
 app.use(expressValidator());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -191,7 +191,8 @@ app.get('/send', function(req, res, next) {
 app.use('/api',api);
 
 app.get('*', function(req, res){
-	res.sendFile(path.join(__dirname,'dist/index.html'));
+	// res.sendFile(path.join(__dirname,'dist/index.html'));
+  res.send('hi');
 });
 
 const port = process.env.PORT || '8080';
