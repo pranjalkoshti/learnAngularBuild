@@ -43,6 +43,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 var options = {   // DATABASE CONNECTIVITY CREDENTIALS
   host     : config.mysqlHost,
