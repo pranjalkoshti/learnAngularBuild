@@ -141,7 +141,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
   ],
   providers: [
     Title,
@@ -153,7 +153,7 @@ const appRoutes: Routes = [
     AuthBusinessService,
     AuthUsersService,
     AuthUserGuard,
-    {provide: LocationStrategy, useClass: PathLocationStrategy}
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

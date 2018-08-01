@@ -562,7 +562,7 @@ var AppModule = /** @class */ (function () {
                 _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"].forRoot(),
                 ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_6__["TooltipModule"].forRoot(),
                 ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_7__["ModalModule"].forRoot(),
-                ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_8__["CollapseModule"].forRoot()
+                ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_8__["CollapseModule"].forRoot(),
             ],
             providers: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["Title"],
@@ -574,7 +574,7 @@ var AppModule = /** @class */ (function () {
                 _services_auth_auth_business_service__WEBPACK_IMPORTED_MODULE_18__["AuthBusinessService"],
                 _services_auth_auth_users_service__WEBPACK_IMPORTED_MODULE_19__["AuthUsersService"],
                 _guards_auth_user_guard__WEBPACK_IMPORTED_MODULE_23__["AuthUserGuard"],
-                { provide: _angular_common__WEBPACK_IMPORTED_MODULE_4__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_4__["PathLocationStrategy"] }
+                { provide: _angular_common__WEBPACK_IMPORTED_MODULE_4__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_4__["HashLocationStrategy"] }
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
         })
