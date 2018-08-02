@@ -9,9 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-    "engines": {
-            "node": "8.9.3"
-    },
+  "engines": {
+    "node": "8.9.3"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.2",
@@ -45,6 +45,7 @@
     "passport-local": "^1.0.0",
     "pg": "^7.4.3",
     "rxjs": "^6.0.0",
+    "webpack": "^4.16.3",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
